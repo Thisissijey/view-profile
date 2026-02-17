@@ -4,438 +4,358 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christine Joy Alutaya | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #0f172a;
-            --primary-blue: #1e40af;
-            --accent-light: #60a5fa;
-            --bg-light: #f8fafc;
-            --text-main: #334155;
-            --white: #ffffff;
+            --primary-dark: #1a1a2e;
+            --accent-gold: #c5a059;
+            --text-light: #f4f4f4;
+            --glass: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .poem-title {
-            font-family: 'Playfair Display', serif;
+        /* Moving Background Particles */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
 
-        /* --- Animations --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* --- Navigation --- */
+        /* Navigation */
         nav {
             position: fixed;
             width: 100%;
-            padding: 1.5rem 10%;
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(15, 12, 41, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary-dark);
-            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
         }
 
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li { margin-left: 30px; }
         .nav-links a {
             text-decoration: none;
-            color: var(--text-main);
-            margin-left: 2rem;
+            color: var(--text-light);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: 0.3s;
         }
+        .nav-links a:hover { color: var(--accent-gold); }
 
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 100vh;
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
-            color: white;
-            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s ease-out;
         }
 
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero { text-align: center; }
         .hero h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .btn-main {
-            padding: 1rem 2.5rem;
-            background: var(--accent-light);
-            color: var(--primary-dark);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn-main:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* --- About Section --- */
-        .about {
-            padding: 100px 10%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: var(--primary-blue);
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-style: italic;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 5px 15px;
-            background: #dcfce7;
-            color: #166534;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
             margin-bottom: 10px;
         }
-
-        /* --- Poetry Section (The Slider) --- */
-        .poetry-section {
-            background: #0f172a;
-            color: white;
-            padding: 100px 10%;
-            text-align: center;
+        .hero p { font-size: 1.2rem; color: #bbb; }
+        .badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 15px;
         }
 
+        /* Poetry Grid */
         .poetry-container {
-            max-width: 800px;
-            margin: 50px auto;
-            min-height: 400px;
-            position: relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
         }
 
         .poem-card {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-            background: rgba(255,255,255,0.05);
-            padding: 40px;
+            background: var(--glass);
+            padding: 30px;
             border-radius: 15px;
-            border-left: 5px solid var(--accent-light);
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .poem-card.active {
-            display: block;
+        .poem-card:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.15);
+            border-color: var(--accent-gold);
         }
 
-        .poem-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--accent-light);
+        .poem-card h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
         }
 
         .poem-content {
+            display: none;
             font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 15px;
             white-space: pre-line;
-            font-size: 1.1rem;
         }
 
-        .poetry-nav {
+        /* Service Section */
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             margin-top: 30px;
         }
 
-        .poetry-nav button {
-            background: transparent;
-            border: 1px solid var(--accent-light);
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin: 0 10px;
+        .service-box {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0,0,0,0.3);
+            padding: 25px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        /* Footer / Contact */
+        .contact-footer {
+            text-align: center;
+            padding: 50px;
+            background: #0a0a1a;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent-gold);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 20px;
             transition: 0.3s;
         }
 
-        .poetry-nav button:hover {
-            background: var(--accent-light);
-            color: var(--primary-dark);
+        .cta-button:hover {
+            box-shadow: 0 0 20px var(--accent-gold);
+            transform: translateY(-3px);
         }
 
-        /* --- Services Section --- */
-        .services {
-            padding: 100px 10%;
-            background: white;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            padding: 30px;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-blue);
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 50px 10%;
-            background: var(--primary-dark);
-            color: white;
-            text-align: center;
-        }
-
-        .contact-info {
-            margin-top: 20px;
-            font-size: 1.1rem;
-        }
-
-        /* --- Responsive Design --- */
+        /* Responsive */
         @media (max-width: 768px) {
-            .about { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
+            nav { padding: 20px; }
             .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <canvas id="canvas-bg"></canvas>
+
     <nav>
-        <div class="logo">CJA.PORTFOLIO</div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#poetry">Poetry</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <div class="logo">C.J. Alutaya</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#poetry">Poetry</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <section class="hero">
-        <h1>Christine Joy Alutaya</h1>
-        <p>Educator | Poet | Summa Cum Laude</p>
-        <a href="#poetry" class="btn-main">Explore My Verse</a>
-    </section>
-
-    <section id="about" class="about">
-        <div class="about-image">
-            <div style="text-align:center">
-                <p>"Words are the mirrors of the soul."</p>
-                <small>— C.J.A</small>
+    <section id="about" class="active">
+        <div class="hero">
+            <h1>Christine Joy Alutaya</h1>
+            <p>Licensed Professional Teacher | Summa Cum Laude</p>
+            <div class="badge">BSED English</div>
+            <div style="max-width: 700px; margin: 30px auto; text-align: left;">
+                <p>I am a 24-year-old educator with a soul fueled by the rhythm of language. Since my first year of high school, poetry hasn't just been a hobby—it's been my primary lens for viewing the world. My academic journey in English education has sharpened my precision, but my heart remains with the lyrical beauty of the written word.</p>
             </div>
-        </div>
-        <div class="about-text">
-            <span class="badge">Academic Excellence</span>
-            <h2>A Journey of Letters & Learning</h2>
-            <p>I am a 24-year-old educator with a **Bachelor of Secondary Education Major in English**, graduating as **Summa Cum Laude**. My relationship with the written word began in my first year of high school, where I discovered that poetry isn't just a hobby—it's a way of breathing.</p>
-            <br>
-            <p>While many seek adventure in the mountains, I find my peaks in the rhythm of a well-placed stanza and my depths in the nuances of English literature.</p>
         </div>
     </section>
 
-    <section id="poetry" class="poetry-section">
-        <h2>The Poetry Portfolio</h2>
-        <p>Ten distinct voices from a decade of writing.</p>
+    <section id="poetry">
+        <h2 style="font-family: 'Playfair Display'; font-size: 3rem; text-align: center;">The Collection</h2>
+        <p style="text-align: center; margin-bottom: 40px;">10 Verses. 10 Worlds. (Click to read)</p>
+        
+        <div class="poetry-container" id="poetryGrid">
+            </div>
+    </section>
 
-        <div class="poetry-container">
-            <div class="poem-card active">
-                <h3 class="poem-title">I. The Chalk’s Echo</h3>
-                <p class="poem-content">White dust on tired fingers,
-                A symphony of scratching on the slate.
-                To teach is to be a sculptor,
-                Of a future we cannot yet dictate.</p>
+    <section id="services">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem;">Academic & Creative Services</h2>
+        <div class="services">
+            <div class="service-box">
+                <h3>Creative Writing</h3>
+                <p>Bespoke poetry, prose, and creative storytelling tailored to your specific themes.</p>
             </div>
-            <div class="poem-card">
-                <h3 class="poem-title">II. Midnight Ink</h3>
-                <p class="poem-content">The moon is a comma in a sky of prose,
-                Where the restless heart finally knows,
-                That silence is a language rarely spoken,
-                By those whose dreams remain unbroken.</p>
+            <div class="service-box">
+                <h3>Content Editing</h3>
+                <p>Professional proofreading and structural editing for academic papers and essays.</p>
             </div>
-            <div class="poem-card">
-                <h3 class="poem-title">III. Syntax of Soul</h3>
-                <p class="poem-content">Subject, verb, and the object of my affection,
-                Lost in the grammar of a quiet connection.
-                No punctuation can halt this flow,
-                Where logic ends and feelings grow.</p>
-            </div>
-            <div class="poem-card">
-                <h3 class="poem-title">IV. Graduation Gown</h3>
-                <p class="poem-content">Heavy silk and gold-trimmed pride,
-                Years of struggle tucked inside.
-                The 'Summa' title is a heavy crown,
-                Worn while the sun of youth goes down.</p>
-            </div>
-            <div class="poem-card">
-                <h3 class="poem-title">V. First Year High</h3>
-                <p class="poem-content">A notebook hidden in a crowded bag,
-                Before the spirit learned to sag.
-                The very first rhyme, a clumsy beat,
-                Made the world feel finally complete.</p>
-            </div>
-            <div class="poem-card">
-                <h3 class="poem-title">VI. Urban Rustle</h3>
-                <p class="poem-content">Concrete veins and electric blood,
-                The city drowning in a human flood.
-                I find my forest in the library aisles,
-                And travel across a thousand miles.</p>
-            </div>
-            <div class="poem-card">
-                <h3 class="poem-title">VII. Digital Dust</h3>
-                <p class="poem-content">Cursors blink like a dying star,
-                In a world where we forgot who we are.
-                Pixels replace the scent of old paper,
-                As memories turn to a flickering vapor.</p>
-            </div>
-            <div class="poem-card">
-                <h3 class="poem-title">VIII. The Editor's Red</h3>
-                <p class="poem-content">Strike through the ego, bleed on the page,
-                Wisdom is found in the pruning of age.
-                Less is more when the truth is bare,
-                A singular word is a silent prayer.</p>
-            </div>
-            <div class="poem-card">
-                <h3 class="poem-title">IX. Seasons of Blue</h3>
-                <p class="poem-content">Not the ocean, but the shade of a bruise,
-                The colors that we often choose,
-                When the morning is cold and the coffee is black,
-                And there is no road leading us back.</p>
-            </div>
-            <div class="poem-card">
-                <h3 class="poem-title">X. The Final Period</h3>
-                <p class="poem-content">The pen rests now, its duty done,
-                Under the light of a setting sun.
-                The portfolio ends, but the story is wide,
-                With millions of words still trapped inside.</p>
+            <div class="service-box">
+                <h3>Academic Coaching</h3>
+                <p>Guidance on English literature and language assignments for students.</p>
             </div>
         </div>
-
-        <div class="poetry-nav">
-            <button onclick="changePoem(-1)">Previous</button>
-            <span id="poem-index">1 / 10</span>
-            <button onclick="changePoem(1)">Next Poem</button>
+        
+        <div style="margin-top: 40px; background: var(--glass); padding: 30px; border-radius: 10px;">
+            <h3>What Colleagues Say</h3>
+            <p style="font-style: italic; margin-top: 10px;">"Christine possesses a rare combination of academic rigor and artistic sensitivity. Her work is always flawless and deeply moving."</p>
+            <p>- Academic Associate</p>
         </div>
     </section>
 
-    <section id="services" class="services">
-        <h2 style="text-align:center">Academic & Creative Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Content Writing</h3>
-                <p>High-quality articles, essays, and creative pieces tailored to your voice.</p>
-            </div>
-            <div class="service-card">
-                <h3>Academic Editing</h3>
-                <p>Ensuring your papers are grammatically perfect and structurally sound.</p>
-            </div>
-            <div class="service-card">
-                <h3>Curriculum Design</h3>
-                <p>Specialized educational materials for English language learners.</p>
-            </div>
-        </div>
-
-        <div style="margin-top: 50px; text-align: center; padding: 40px; background: #f1f5f9; border-radius: 20px;">
-            <h3>"Christine's attention to detail is unmatched. Her Summa Cum Laude background truly shows in her work."</h3>
-            <p style="margin-top:10px; font-weight: 600;">— Academic Peer Review</p>
-        </div>
+    <section id="contact" style="text-align: center;">
+        <h2>Ready to Collaborate?</h2>
+        <p>Let’s turn your ideas into lyrical reality.</p>
+        <a href="mailto:christinejoyalutaya7@gmail.com" class="cta-button">Email Me: christinejoyalutaya7@gmail.com</a>
     </section>
 
-    <footer id="contact">
-        <h2>Let's Collaborate</h2>
-        <p>Ready to bring your projects to life with precision and creativity?</p>
-        <div class="contact-info">
-            Email: <a href="mailto:christinejoyalutaya7@gmail.com" style="color: var(--accent-light);">christinejoyalutaya7@gmail.com</a>
-        </div>
-        <br>
-        <a href="mailto:christinejoyalutaya7@gmail.com" class="btn-main">Contact Me Now</a>
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">© 2024 Christine Joy Alutaya. All rights reserved.</p>
+    <footer class="contact-footer">
+        <p>&copy; 2024 Christine Joy Alutaya. Built with passion & poetry.</p>
     </footer>
 
     <script>
-        let currentPoem = 0;
-        const poems = document.querySelectorAll('.poem-card');
-        const indexDisplay = document.getElementById('poem-index');
+        // 1. Poetry Data (10 Unique Poems)
+        const poems = [
+            { title: "Ink & Echoes", body: "The pen is a heavy anchor\nDragging across the white sea\nLeaving trails of black memory\nWhere my silence used to be." },
+            { title: "Chalk Dust Dreams", body: "Syllables dance on the blackboard\nA symphony of vowels and hope\nTeaching the young how to climb\nAnd the weary how to cope." },
+            { title: "The 24th Autumn", body: "Not a child, not yet ancient\nStanding on the bridge of years\nCollecting gold from the falling leaves\nAnd wisdom from old fears." },
+            { title: "Syntax of stars", body: "The universe is a sentence\nInfinite and without a pause\nWe are but the punctuation\nSearching for the laws." },
+            { title: "Summa Heart", body: "The honors are but dry pressed flowers\nBetween the pages of the midnight oil\nThe true reward is the burning light\nWithin the student's toil." },
+            { title: "Noon-day Quiet", body: "The city screams in iron tongues\nBut inside the library's breath\nTime slows to a paper flutter\nCheating the rush of death." },
+            { title: "Grammar of Grief", body: "Tense is a tricky thing to master\nWhen the past won't stay behind\nI am still conjugating 'love'\nIn the hallways of my mind." },
+            { title: "First Year High", body: "A girl with a notebook and a secret\nHiding from the cafeteria noise\nDiscovering that words have wings\nAnd a much louder voice." },
+            { title: "The Editor's Blade", body: "To cut is to love the work more\nBleeding out the unnecessary\nUntil only the bone of the truth\nRemains for the eyes to carry." },
+            { title: "Final Stanza", body: "The light dims on the final page\nThe ink begins to dry and fade\nBut a poem never truly ends\nIt just moves into the shade." }
+        ];
 
-        function changePoem(direction) {
-            poems[currentPoem].classList.remove('active');
-            currentPoem += direction;
+        const poetryGrid = document.getElementById('poetryGrid');
 
-            if (currentPoem >= poems.length) currentPoem = 0;
-            if (currentPoem < 0) currentPoem = poems.length - 1;
+        poems.forEach(poem => {
+            const card = document.createElement('div');
+            card.className = 'poem-card';
+            card.innerHTML = `
+                <h3>${poem.title}</h3>
+                <p style="font-size: 0.8rem; color: #888;">Tap to unfold</p>
+                <div class="poem-content">${poem.body}</div>
+            `;
+            card.onclick = function() {
+                const content = this.querySelector('.poem-content');
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            };
+            poetryGrid.appendChild(card);
+        });
 
-            poems[currentPoem].classList.add('active');
-            indexDisplay.innerText = `${currentPoem + 1} / 10`;
+        // 2. Interactive Background (Canvas Particles)
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
 
-        // Add some interactive hover effects
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseover', () => {
-                card.style.backgroundColor = '#f8fafc';
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(197, 160, 89, 0.3)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
             });
-            card.addEventListener('mouseout', () => {
-                card.style.backgroundColor = 'transparent';
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        createParticles();
+        animate();
+
+        // 3. Scroll Reveal Animation
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            sections.forEach(sec => {
+                const top = window.scrollY;
+                const offset = sec.offsetTop - 300;
+                if (top >= offset) {
+                    sec.classList.add('active');
+                }
             });
         });
     </script>
 </body>
-</html>
+                </html>
