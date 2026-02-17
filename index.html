@@ -1,311 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- BASIC META SETTINGS -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christine Joy Alutaya | Professional Portfolio</title>
 
-    <!-- SEO META TAGS -->
-    <meta name="description" content="Professional portfolio website of Christine Joy Alutaya — dedicated professional specializing in communication, leadership, education, and behavioral therapy." />
-    <meta name="keywords" content="Christine Joy Alutaya, Portfolio, Behavioral Therapy, Teacher, Supervisor, Education, Professional" />
-    <meta name="author" content="Christine Joy Alutaya" />
+<!-- SEO -->
+<meta name="description" content="Interactive professional portfolio of Christine Joy Alutaya — educator, leader, behavioral therapy practitioner, and creative writer.">
+<meta name="keywords" content="christine joy alutaya, portfolio, educator, supervisor, teacher, therapy, creative">
+<meta name="author" content="Christine Joy Alutaya">
 
-    <title>Christine Joy Alutaya | Professional Portfolio</title>
+<style>
 
-    <!-- ======= CSS STYLES ======= -->
-    <style>
-        /* GLOBAL RESETS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+/* =========================================
+   CORE COLORS & DARK MODE VARIABLES
+========================================= */
+:root {
+    --primary: #1d3557;
+    --secondary: #457b9d;
+    --accent: #e76f51;
+    --light: #ffffff;
+    --bg: #f1f5f9;
+    --text: #222;
+    --hero-gradient: linear-gradient(135deg, #1d3557, #457b9d, #e76f51);
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            background: #f8f9fa;
-            color: #222;
-        }
+body.dark {
+    --bg: #0b0f14;
+    --text: #f1f1f1;
+    --light: #111820;
+    --primary: #0e2038;
+    --secondary: #2d4b66;
+    --accent: #ff7f50;
+}
 
-        a { text-decoration: none; color: inherit; }
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+    scroll-behavior: smooth;
+}
 
-        /* HEADER + NAVIGATION */
-        header {
-            background: #1d3557;
-            padding: 20px;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    transition: 0.4s ease;
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1100px;
-            margin: auto;
-        }
+/* Moving background animation */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(0,0,0,0.06), transparent 60%);
+    animation: moveBg 25s linear infinite;
+    z-index: -10;
+}
+@keyframes moveBg {
+    from { transform: translate(0,0); }
+    to   { transform: translate(-25%, -25%); }
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
+/* =========================================
+   FLOATING SIDEBAR NAVIGATION
+========================================= */
+#sidebar {
+    position: fixed;
+    top: 50%; left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 999;
+}
+#sidebar a {
+    background: var(--primary);
+    color: white;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    transition: 0.3s;
+}
+#sidebar a:hover {
+    background: var(--accent);
+    transform: scale(1.1);
+}
 
-        nav ul li a:hover {
-            color: #a8dadc;
-        }
+/* =========================================
+   TOP NAVIGATION BAR
+========================================= */
+header {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 15px 25px;
+    background: var(--primary);
+    color: white;
+    z-index: 999;
+    transition: 0.3s;
+}
+header.small { padding: 8px 25px; }
 
-        /* SECTION WRAPPER */
-        section {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
+nav {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .brand {
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+nav ul li a {
+    color: white;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+nav ul li a:hover {
+    background: var(--accent);
+}
 
-        h1, h2 {
-            margin-bottom: 15px;
-            color: #1d3557;
-        }
+/* Dark mode button */
+#darkToggle {
+    padding: 6px 14px;
+    background: var(--accent);
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+}
 
-        /* ABOUT SECTION */
-        .about-box {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        }
+/* =========================================
+   HERO SECTION
+========================================= */
+#hero {
+    padding-top: 150px;
+    padding-bottom: 120px;
+    text-align: center;
+    background: var(--hero-gradient);
+    color: white;
+}
+#hero h1 {
+    font-size: 55px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+#hero p { font-size: 22px; }
 
-        /* INFO GRID */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 15px;
-        }
+/* Animated line */
+#hero svg {
+    margin-top: 20px;
+    width: 200px;
+    stroke: white;
+    stroke-width: 3;
+    animation: dash 3s linear infinite;
+}
+@keyframes dash {
+    to { stroke-dashoffset: -1000; }
+}
 
-        /* EXPERIENCE / EDUCATION / SKILLS CARDS */
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        }
+/* =========================================
+   SECTIONS
+========================================= */
+section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: 0.8s ease;
+}
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .card h3 {
-            color: #457b9d;
-            margin-bottom: 10px;
-        }
+h2 {
+    font-size: 30px;
+    color: var(--primary);
+    position: relative;
+    margin-bottom: 25px;
+}
+h2::after {
+    content: "";
+    width: 60px; height: 4px;
+    background: var(--accent);
+    position: absolute;
+    bottom: -8px; left: 0;
+    border-radius: 5px;
+}
 
-        .card ul {
-            padding-left: 20px;
-            margin-top: 8px;
-        }
+/* INFO CARDS */
+.card {
+    background: var(--light);
+    padding: 25px;
+    margin-top: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
 
-        /* CONTACT FORM */
-        form {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-            max-width: 700px;
-        }
+/* =========================================
+   SKILL BARS
+========================================= */
+.skill-container {
+    margin: 15px 0;
+}
+.skill-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.skill-bar {
+    width: 100%; height: 15px;
+    background: #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.skill-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    border-radius: 20px;
+    transition: width 2s ease;
+}
 
-        form input, form textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
+/* =========================================
+   POEMS
+========================================= */
+.poem {
+    padding: 22px;
+    background: var(--light);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-style: italic;
+    white-space: pre-wrap;
+}
 
-        form button {
-            padding: 12px 20px;
-            border: none;
-            background: #1d3557;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+/* =========================================
+   ACCORDION
+========================================= */
+.accordion-item {
+    background: var(--light);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.accordion-header {
+    padding: 15px;
+    background: var(--secondary);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background: var(--light);
+    padding: 0 15px;
+    transition: 0.4s ease;
+}
 
-        form button:hover {
-            background: #457b9d;
-        }
+/* =========================================
+   CONTACT FORM
+========================================= */
+form input, form textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+}
+form button {
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+#status {
+    margin-top: 10px;
+    color: var(--accent);
+    font-weight: bold;
+}
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 25px;
-            margin-top: 20px;
-            background: #1d3557;
-            color: white;
-        }
-
-        /* RESPONSIVE ADJUSTMENTS */
-        @media (max-width: 768px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            nav ul {
-                display: none; /* For simplicity — can be expanded to mobile menu */
-            }
-        }
-    </style>
+/* =========================================
+   FOOTER
+========================================= */
+footer {
+    background: var(--primary);
+    padding: 35px;
+    color: white;
+    text-align: center;
+    margin-top: 80px;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- ======= NAVIGATION ======= -->
-    <header>
-        <nav>
-            <h2>Christine Joy Alutaya</h2>
+<!-- FLOATING SIDEBAR NAV -->
+<div id="sidebar">
+    <a href="#hero">H</a>
+    <a href="#about">A</a>
+    <a href="#experience">E</a>
+    <a href="#education">Ed</a>
+    <a href="#skills">S</a>
+    <a href="#poems">P</a>
+    <a href="#contact">C</a>
+</div>
 
-            <!-- Navigation links (smooth scroll enabled) -->
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<!-- HEADER -->
+<header id="header">
+    <nav>
+        <div class="brand">Christine Joy Alutaya</div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#poems">Poems</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div id="darkToggle">Dark mode</div>
+    </nav>
+</header>
 
-        </nav>
-    </header>
+<!-- HERO -->
+<section id="hero" class="visible">
+    <h1>christine joy alutaya</h1>
+    <p>educator • leader • behavioral therapy practitioner • creative</p>
 
-    <!-- ======= ABOUT SECTION ======= -->
-    <section id="about">
-        <h1>About Me</h1>
+    <svg viewBox="0 0 200 50">
+        <path d="M10 25 Q 95 -10 190 25" fill="none" stroke-dasharray="200" />
+    </svg>
+</section>
 
-        <div class="about-box">
-            <p>
-                A dedicated and adaptable professional with strong experience in leadership, communication,
-                education, and behavioral therapy. Proven ability to foster positive relationships, support students,
-                manage operations, and contribute to organizational success through professionalism 
-                and efficiency.
-            </p>
+<!-- ABOUT -->
+<section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+        <p>I am a dedicated professional with expertise in education, behavioral therapy,
+            communication, leadership, and student development. I work with empathy, structure,
+            and clarity, supporting every individual with integrity and purpose.</p>
 
-            <div class="info-grid">
-                <p><strong>Location:</strong> Caloocan</p>
-                <p><strong>Phone:</strong> +63 946 691 4473</p>
-                <p><strong>Email:</strong> christinejoyalutaya7@gmail.com</p>
-            </div>
-        </div>
-    </section>
+        <p><strong>Location:</strong> Caloocan</p>
+        <p><strong>Phone:</strong> +63 946 691 4473</p>
+        <p><strong>Email:</strong> christinejoyalutaya7@gmail.com</p>
+    </div>
+</section>
 
-    <!-- ======= EXPERIENCE SECTION ======= -->
-    <section id="experience">
-        <h2>Professional Experience</h2>
+<!-- EXPERIENCE -->
+<section id="experience">
+    <h2>Experience</h2>
+    <div class="card">
+        <h3>Branch Supervisor</h3>
+        <p><em>Bright Future Behavioral Therapy Inc. — May 2025 to Jan 2026</em></p>
+        <p>Oversaw operations, documentation, finances, communication, and logistics.</p>
+    </div>
+    <div class="card">
+        <h3>Teacher</h3>
+        <p><em>Bright Future Behavioral Therapy Inc. — Apr 2024 to Jan 2026</em></p>
+        <p>Conducted individualized sessions, supported families, and guided behavior improvement programs.</p>
+    </div>
+</section>
 
-        <!-- Branch Supervisor -->
-        <div class="card">
-            <h3>Branch Supervisor — The Bright Future Behavioral Therapy Inc.</h3>
-            <p><em>San Jose Del Monte, Bulacan — May 2025 to Jan 2026</em></p>
+<!-- EDUCATION -->
+<section id="education">
+    <h2>Education</h2>
+    <div class="card">
+        <h3>Bachelor of Secondary Education — Major in English</h3>
+        <p>St. Vincent de Ferrer College of Camarin Inc.</p>
+        <p><strong>Summa Cum Laude</strong> — 2019–2023</p>
+    </div>
+</section>
 
-            <ul>
-                <li>Managed branch finances and documentation</li>
-                <li>Oversaw daily sessions and procured necessary supplies</li>
-                <li>Acted as the primary liaison between the branch and main office</li>
-            </ul>
-        </div>
+<!-- SKILLS + animated bars -->
+<section id="skills">
+    <h2>Skills</h2>
 
-        <!-- Teacher -->
-        <div class="card">
-            <h3>Teacher — The Bright Future Behavioral Therapy Inc.</h3>
-            <p><em>San Jose Del Monte, Bulacan — Apr 2024 to Jan 2026</em></p>
+    <div class="card">
+        <h3>Technical Skills</h3>
 
-            <ul>
-                <li>Conducted individualized sessions tailored to students' needs</li>
-                <li>Communicated session progress and behavior updates to parents</li>
-                <li>Provided at-home strategies for continued learning and behavioral support</li>
-            </ul>
-        </div>
-
-    </section>
-
-    <!-- ======= EDUCATION SECTION ======= -->
-    <section id="education">
-        <h2>Education</h2>
-
-        <div class="card">
-            <h3>Bachelor of Secondary Education — Major in English</h3>
-            <p><em>St. Vincent de Ferrer College of Camarin Inc., Caloocan</em></p>
-            <p><strong>Jun 2019 – Jun 2023</strong></p>
-            <p><strong>Honors:</strong> Summa Cum Laude</p>
-        </div>
-    </section>
-
-    <!-- ======= SKILLS SECTION ======= -->
-    <section id="skills">
-        <h2>Skills</h2>
-
-        <div class="card">
-            <h3>Technical Skills</h3>
-            <ul>
-                <li>Google Workspace</li>
-                <li>Canva</li>
-            </ul>
+        <div class="skill-container">
+            <div class="skill-label">Google Workspace</div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-fill="95%"></div></div>
         </div>
 
-        <div class="card">
-            <h3>Soft Skills</h3>
-            <ul>
-                <li>Professionalism</li>
-                <li>Adaptability</li>
-                <li>Conflict Resolution</li>
-                <li>Collaboration</li>
-            </ul>
+        <div class="skill-container">
+            <div class="skill-label">Canva</div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-fill="90%"></div></div>
         </div>
-    </section>
+    </div>
 
-    <!-- ======= CERTIFICATIONS ======= -->
-    <section id="certifications">
-        <h2>Certifications</h2>
-
-        <div class="card">
-            <ul>
-                <li>Licensed Professional Teacher</li>
-            </ul>
+    <div class="card">
+        <h3>Soft Skills</h3>
+        <div class="accordion-item">
+            <div class="accordion-header">Professionalism</div>
+            <div class="accordion-content"><p>Maintains high ethical standards and work discipline.</p></div>
         </div>
-    </section>
+        <div class="accordion-item">
+            <div class="accordion-header">Adaptability</div>
+            <div class="accordion-content"><p>Thrives in changing environments.</p></div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Conflict Resolution</div>
+            <div class="accordion-content"><p>Facilitates positive communication and solutions.</p></div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Collaboration</div>
+            <div class="accordion-content"><p>Works effectively across teams and roles.</p></div>
+        </div>
+    </div>
+</section>
 
-    <!-- ======= CONTACT SECTION ======= -->
-    <section id="contact">
-        <h2>Contact Me</h2>
+<!-- POEMS -->
+<section id="poems">
+    <h2>original poems</h2>
 
-        <!-- Dummy contact form (can be integrated with backend) -->
-        <form id="contactForm">
-            <input type="text" id="name" placeholder="Your Name" required />
-            <input type="email" id="email" placeholder="Your Email" required />
-            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-            <p id="formStatus" style="margin-top: 10px; color: #1d3557;"></p>
-        </form>
-    </section>
+    <div class="poem">
+        in the quiet corners of my becoming  
+        i learn that peace does not arrive loudly  
+        but settles softly  
+        like a gentle breath after a long day
+    </div>
 
-    <footer>
-        <p>© 2026 Christine Joy Alutaya. All Rights Reserved.</p>
-    </footer>
+    <div class="poem">
+        i rise in small ways  
+        unnoticed sometimes  
+        but every inch forward  
+        is a victory the universe applauds
+    </div>
 
-    <!-- ======= JAVASCRIPT FOR INTERACTION ======= -->
-    <script>
-        /* Smooth scroll is handled by CSS scroll-behavior */
+    <div class="poem">
+        i am a work in progress  
+        stitched with hope  
+        and held together  
+        by quiet courage
+    </div>
 
-        // Simple interactive contact form (front-end only)
-        document.getElementById("contactForm").addEventListener("submit", function(e) {
-            e.preventDefault();
+    <div class="poem">
+        someday you will understand  
+        that slow blooming  
+        is still blooming  
+        and light finds every flower in time
+    </div>
+</section>
 
-            // Show simple confirmation message
-            document.getElementById("formStatus").textContent =
-                "Thank you! Your message has been submitted.";
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact</h2>
 
-            // Reset fields
-            this.reset();
-        });
-    </script>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="status"></p>
+    </form>
+</section>
+
+<footer>
+    © 2026 Christine Joy Alutaya — All Rights Reserved
+</footer>
+
+<!-- =========================================
+     JAVASCRIPT INTERACTIONS
+========================================= -->
+<script>
+
+/* Dark mode */
+document.getElementById("darkToggle").onclick = () => {
+    document.body.classList.toggle("dark");
+};
+
+/* Header shrink */
+window.addEventListener("scroll", () => {
+    document.getElementById("header").classList.toggle("small", window.scrollY > 50);
+});
+
+/* Reveal sections */
+function revealSections() {
+    document.querySelectorAll("section").forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 120) sec.classList.add("visible");
+    });
+}
+window.addEventListener("scroll", revealSections);
+revealSections();
+
+/* Accordion */
+document.querySelectorAll(".accordion-header").forEach(header => {
+    header.onclick = () => {
+        const panel = header.nextElementSibling;
+        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+    };
+});
+
+/* Skill bar animation */
+function animateSkillBars() {
+    document.querySelectorAll(".skill-bar-fill").forEach(bar => {
+        bar.style.width = bar.dataset.fill;
+    });
+}
+window.addEventListener("scroll", animateSkillBars);
+
+/* Contact form */
+document.getElementById("contactForm").addEventListener("submit", e => {
+    e.preventDefault();
+    document.getElementById("status").textContent = "your message has been received — thank you.";
+    e.target.reset();
+});
+</script>
 
 </body>
 </html>
