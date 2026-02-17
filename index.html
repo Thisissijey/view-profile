@@ -3,276 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christine Joy Alutaya | A Poet's Sanctuary</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <title>The Ink-Stained Heart | Christine Joy Alutaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --deep-ocean: #0a192f;
-            --crimson-ember: #8b0000;
-            --ethereal-blue: #112240;
-            --sky-accent: #64ffda;
-            --paper: #f4f4f4;
-            --text-light: #e6f1ff;
-            --ruby: #e0115f;
+            --deep-sea: #0a192f;
+            --ethereal-blue: #b2ebf2;
+            --moss: #2d5a27;
+            --parchment: #f4f1ea;
+            --ink: #1c1c1c;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--deep-ocean);
-            color: var(--text-light);
-            font-family: 'Lora', serif;
+            background-color: var(--parchment);
+            color: var(--ink);
+            font-family: 'Quicksand', sans-serif;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* Interactive Background Particles */
-        #bg-canvas {
+        /* Interactive Background Canvas */
+        #canvas-bg {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -1;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, #112240 0%, #0a192f 100%);
-        }
-
-        /* Navigation */
-        nav {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 25, 47, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 2px solid var(--crimson-ember);
-        }
-
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: var(--ruby);
-            letter-spacing: 2px;
+            background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
         }
 
         /* Hero Section */
-        header {
-            height: 90vh;
+        .hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 10%;
-            background: linear-gradient(to bottom, transparent, rgba(139, 0, 0, 0.1));
-        }
-
-        .main-name {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            color: var(--text-light);
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(224, 17, 95, 0.4);
-        }
-
-        .subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 4px;
-            color: var(--ruby);
-            text-transform: uppercase;
-        }
-
-        .personal-intro {
-            max-width: 700px;
-            margin-top: 30px;
-            font-style: italic;
-            color: #8892b0;
-            line-height: 1.8;
-        }
-
-        /* Diary/Portfolio Section */
-        .diary-container {
-            max-width: 900px;
-            margin: 50px auto;
             padding: 20px;
         }
 
-        .page-info {
-            text-align: right;
-            margin-bottom: 20px;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--ruby);
+        .hero h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            letter-spacing: -2px;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .poem-card {
-            background: var(--ethereal-blue);
-            border-radius: 15px;
-            padding: 50px;
-            margin-bottom: 40px;
-            border-left: 5px solid var(--crimson-ember);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .poem-card:hover {
-            transform: scale(1.02);
-        }
-
-        .poem-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-        }
-
-        .poem-title {
-            font-family: 'Cinzel', serif;
-            color: var(--ruby);
-            font-size: 2rem;
-        }
-
-        .poem-date {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            color: #8892b0;
-        }
-
-        .poem-body {
+        .hero p {
             font-size: 1.2rem;
-            line-height: 2;
-            white-space: pre-line;
-            margin-bottom: 40px;
-        }
-
-        .sentiment-section {
-            background: rgba(139, 0, 0, 0.1);
-            padding: 25px;
-            border-radius: 10px;
-            border-top: 1px solid var(--crimson-ember);
-        }
-
-        .sentiment-section h4 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--ruby);
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        .sentiment-text {
-            font-size: 1rem;
-            color: #ccd6f6;
+            max-width: 600px;
+            margin-top: 20px;
             line-height: 1.6;
         }
 
-        /* Interactive Pagination */
+        /* Artistic Drawing Accents */
+        .sketch-decor {
+            position: absolute;
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Poetry Journal Section */
+        .journal-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .poem-entry {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            margin-bottom: 150px;
+            padding: 60px;
+            border-radius: 2px;
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.05);
+            position: relative;
+            transform: rotate(-1deg);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .poem-entry.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+        }
+
+        .poem-entry:nth-child(even) { transform: rotate(1.5deg); }
+
+        .poem-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2.2rem;
+            color: var(--moss);
+            margin-bottom: 10px;
+        }
+
+        .poem-date {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .poem-body {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            white-space: pre-line;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--ethereal-blue);
+            padding-left: 30px;
+        }
+
+        .sentiment-note {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #444;
+            border: 1px dashed var(--ethereal-blue);
+        }
+
+        /* Navigation Controls */
         .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 50px;
-            padding: 20px;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
         }
 
         .btn {
-            background: transparent;
-            border: 2px solid var(--ruby);
-            color: var(--ruby);
-            padding: 12px 30px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 5px;
-            text-transform: uppercase;
-        }
-
-        .btn:hover:not(:disabled) {
-            background: var(--ruby);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--ink);
             color: white;
-            box-shadow: 0 0 15px var(--ruby);
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: 0.3s;
         }
 
-        .btn:disabled {
-            border-color: #333;
-            color: #333;
-            cursor: not-allowed;
+        .btn:hover { background: var(--moss); transform: scale(1.1); }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
-        /* Footer */
         footer {
             text-align: center;
-            padding: 60px 20px;
-            background: #020c1b;
-            margin-top: 100px;
-        }
-
-        .copyright {
-            font-family: 'Montserrat', sans-serif;
+            padding: 100px 20px;
             font-size: 0.9rem;
-            color: #495670;
+            letter-spacing: 1px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .poem-card { padding: 30px; }
-            .poem-title { font-size: 1.5rem; }
-            .btn { padding: 10px 20px; font-size: 0.8rem; }
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .poem-entry { padding: 30px; margin-bottom: 80px; }
+            .poem-body { font-size: 1.1rem; padding-left: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <canvas id="canvas-bg"></canvas>
 
-    <nav>
-        <div class="logo">C.J.A</div>
-        <div class="copyright" style="color: var(--text-light)">Personal Poetry Archives</div>
-    </nav>
-
-    <header>
-        <h1 class="main-name">Christine Joy Alutaya</h1>
-        <div class="subtitle">BSEd English | Eternal Dreamer</div>
-        <p class="personal-intro">
-            I've been in love with the cadence of poems since my first year of high school. 
-            This is my heart poured into pixels—a collection of 50 distinct thoughts, 
-            woven from blue horizons and red embers. This isn't a portfolio for them; it's a home for me.
+    <section class="hero">
+        <h1 id="user-name">Christine Joy Alutaya</h1>
+        <p>
+            24 years of breathing, 12 years of versing. <br>
+            Bachelor of Secondary Education, Major in English. <br>
+            A collector of tides, sky-colors, and the silence between trees.
         </p>
-    </header>
+        <div style="margin-top: 50px; font-size: 2rem;">↓</div>
+    </section>
 
-    <main class="diary-container">
-        <div class="page-info" id="pageTracker">Viewing Page 1 of 10</div>
-        
-        <div id="poemDisplay">
-            </div>
-
-        <div class="controls">
-            <button class="btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
-            <button class="btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <div class="journal-wrap" id="journal">
         </div>
-    </main>
+
+    <div class="controls">
+        <button class="btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+    </div>
 
     <footer>
-        <p class="copyright">© 2026 Christine Joy Alutaya. All Rights Reserved.</p>
-        <p style="color: var(--crimson-ember); margin-top: 10px; font-size: 0.8rem;">Every word is a footprint of my journey.</p>
+        <p>© 2026 Christine Joy Alutaya. All Rights Reserved.</p>
+        <p style="opacity: 0.5; margin-top: 10px;">Hand-coded with ink and code.</p>
     </footer>
 
     <script>
-        // Background Animation Logic
-        const canvas = document.getElementById('bg-canvas');
+        // 10 Distinct Poems with Unique Topics, Rhythms, and Sentiments
+        const diaryData = [
+            {
+                title: "The Algebra of Clouds",
+                date: "September 14, 2021",
+                content: "Vapor equations across the blue,\nSubtracting the sun to make way for the gray.\nI count the shapes that I once knew,\nBefore the wind blew the math away.",
+                note: "I was sitting in my 3rd-year college English class looking out the window. I realized that clouds are just like the literature we study—always shifting meaning depending on who is looking at them. I felt a bit flighty that day."
+            },
+            {
+                title: "Salt in the Spine",
+                date: "January 05, 2022",
+                content: "The ocean doesn't borrow,\nIt takes with heavy hands.\nA tidal wave of sorrow,\nCrashing on the sands.",
+                note: "This was a tough week. I went to the bay just to hear something louder than my own thoughts. The ocean is so brutally honest. It doesn't apologize for being powerful, and I think I needed to learn that."
+            },
+            {
+                title: "Metaphor for a Mangrove",
+                date: "May 22, 2022",
+                content: "Roots like fingers in the silt,\nHolding onto what is wet and deep.\nA house of leaves that nature built,\nWhile the rest of the forest is asleep.",
+                note: "I've always loved mangroves. They exist between two worlds—the land and the sea. As an English major, I feel like I live between two worlds too: reality and the books I read."
+            },
+            {
+                title: "Graphite Skin",
+                date: "November 11, 2022",
+                content: "I am smudged and gray at the edges,\nWhere the pencil met the palm.\nWalking along the narrow ledges,\nBetween the storm and the calm.",
+                note: "Writing by hand is my therapy. My 1st-year high school self would be proud that I still have graphite stains on my hands at 24. It’s a mark of a life spent creating."
+            },
+            {
+                title: "The Librarian’s Ghost",
+                date: "March 18, 2023",
+                content: "Shh, the dust is speaking,\nIn the aisles of 800-B.\nThe floorboards are creaking,\nWith the weight of poetry.",
+                note: "The college library was my sanctuary. This is for the quiet moments in the stacks when you feel like the authors are actually in the room with you. It's a bit eerie, but mostly comforting."
+            },
+            {
+                title: "Binary Sunset",
+                date: "August 30, 2023",
+                content: "The sun is a zero, the horizon a one,\nData points bleeding in red.\nNow that the daylight is finally done,\nThe stars are the things left unsaid.",
+                note: "Trying to mix the digital world with nature. Everything is so technical these days, but a sunset still feels like a glitch in the system—too beautiful to be just math."
+            },
+            {
+                title: "Caffeine and Commas",
+                date: "February 14, 2024",
+                content: "A pause in the steam of a bitter cup,\nA breath in the middle of a phrase.\nI wait for the morning to wake me up,\nAnd lead me through the verbal maze.",
+                note: "My Valentine's day was spent with a thesis and a latte. I’ve realized that I use commas like breaths—sometimes I’m just trying to slow my life down enough to enjoy it."
+            },
+            {
+                title: "Under the Narra",
+                date: "July 09, 2024",
+                content: "Sturdy and yellow, the petals fall,\nLike gold coins spent by the breeze.\nI am standing remarkably small,\nBeneath the giant of the trees.",
+                note: "I stood under a Narra tree today and felt so temporary. It’s been there long before my English degree, and it’ll be there long after. It’s humbling to be part of something so old."
+            },
+            {
+                title: "Syntax of the Shoreline",
+                date: "December 20, 2025",
+                content: "The waves are the verbs,\nThe shells are the nouns.\nThe sea-spray disturbs,\nThe noise of the towns.",
+                note: "By the bay again. I started classifying the beach into parts of speech. It’s an occupational hazard of being an educator, I suppose. Everything is a sentence if you look hard enough."
+            },
+            {
+                title: "The Final Draft",
+                date: "February 07, 2026",
+                content: "Ink turns to air on the final page,\nThe story is ready to fly.\nI am stepping out from the paper cage,\nAnd writing my name in the sky.",
+                note: "This is my present moment. At 24, I feel like I'm finally finishing a 'first draft' of my life and starting the real story. It’s terrifying, but the sky is wide open."
+            }
+        ];
+
+        // Injecting Poems with Scroll Reveal Logic
+        const container = document.getElementById('journal');
+        
+        diaryData.forEach((item, index) => {
+            const entry = document.createElement('div');
+            entry.className = 'poem-entry';
+            entry.innerHTML = `
+                <span class="poem-date">${item.date}</span>
+                <h2 class="poem-title">${item.title}</h2>
+                <div class="poem-body">${item.content}</div>
+                <div class="sentiment-box">
+                    <p class="sentiment-note"><strong>Personal Note:</strong> ${item.note}</p>
+                </div>
+            `;
+            container.appendChild(entry);
+        });
+
+        // Scroll Animation Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.poem-entry').forEach(p => observer.observe(p));
+
+        // Interactive Canvas Background
+        const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let particles = [];
 
-        function initCanvas() {
+        function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
@@ -281,118 +307,47 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
             }
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
+                if (this.size > 0.2) this.size -= 0.01;
             }
             draw() {
-                ctx.fillStyle = 'rgba(100, 255, 218, 0.1)';
+                ctx.fillStyle = 'rgba(28, 28, 28, 0.1)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
+        function init() {
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].size <= 0.2) {
+                    particles.splice(i, 1);
+                    i--;
+                    particles.push(new Particle());
+                }
+            }
             requestAnimationFrame(animate);
         }
 
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
-        for(let i=0; i<100; i++) particles.push(new Particle());
+        window.addEventListener('resize', resize);
+        resize();
+        init();
         animate();
-
-        // Poem Data Management
-        const poems = [
-            {
-                title: "Cobalt Solitude",
-                date: "April 15, 2021",
-                body: "The sky is a heavy curtain,\nDraped in shades of bruised ink.\nNothing in this breath is certain,\nSave for the way the stars blink.",
-                sentiment: "I remember writing this when I was just staring at the window for hours. There's a specific kind of peace you only find in the dark blue of the late evening. It felt like the world was holding its breath with me."
-            },
-            {
-                title: "Crimson Collision",
-                date: "May 22, 2021",
-                body: "Red sparks dance on the asphalt,\nHeat rising from the silent stone.\nA feverish pulse, a sudden halt,\nStanding in the fire alone.",
-                sentiment: "This one was born out of frustration. I wanted to capture the 'red' feeling of being overwhelmed but finding strength in that heat. It's loud, it's messy, and it's completely me."
-            },
-            {
-                title: "The English Major's Ghost",
-                date: "September 02, 2021",
-                body: "Syntax breaks beneath the weight,\nOf metaphors I cannot name.\nI am the master of my fate,\nBut language plays a different game.",
-                sentiment: "Written during a particularly hard semester. When you study English, you start overanalyzing your own thoughts. I felt like I was losing my natural voice to academic rules."
-            }
-            // Logic generates 47 more unique poems to ensure strict variety requested
-        ];
-
-        // Unique Content Generator for the remaining 47 poems
-        const themes = ["Ocean", "Fire", "Petrichor", "Rust", "Velvet", "Glass", "Lighthouse", "Echo", "Marrow", "Void", "Silk", "Static", "Cinder", "Tide", "Amber", "Pulse", "Wreckage", "Dawn", "Shadow", "Grit", "Orbit", "Feather", "Iron", "Mist", "Prism", "Root", "Sunder", "Aura", "Blaze", "Cliff", "Dusk", "Frost", "Gale", "Haze", "Iris", "Jolt", "Kite", "Loom", "Maze", "Nadir", "Onyx", "Pith", "Quartz", "Rift", "Silt", "Thaw", "Urn"];
-        
-        for(let i=3; i<50; i++) {
-            const date = new Date(2021, i, Math.floor(Math.random() * 28) + 1);
-            poems.push({
-                title: `${themes[i-3]} ${i % 2 === 0 ? 'Rhythm' : 'Silence'}`,
-                date: date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-                body: `The ${themes[i-3].toLowerCase()} is ${i % 2 === 0 ? 'calling' : 'fading'} now,\nUnderneath the ${i % 3 === 0 ? 'crimson' : 'indigo'} bough.\nNo maps to guide the ${i % 4 === 0 ? 'weary' : 'stray'},\nOnly the ${i % 5 === 0 ? 'ghosts' : 'light'} of yesterday.`,
-                sentiment: `Thinking back to ${date.getFullYear()}, I realized how much my style has shifted. This piece about ${themes[i-3].toLowerCase()} was me trying to find beauty in the mundane. I was just talking to myself in my notebook, not realizing it would become a favorite memory.`
-            });
-        }
-
-        // Sort Chronologically: Oldest to Newest
-        poems.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-        let currentPage = 0;
-        const perPage = 5;
-
-        function displayPoems() {
-            const container = document.getElementById('poemDisplay');
-            container.innerHTML = '';
-            
-            const start = currentPage * perPage;
-            const end = start + perPage;
-            const currentSet = poems.slice(start, end);
-
-            currentSet.forEach(p => {
-                const div = document.createElement('div');
-                div.className = 'poem-card';
-                div.innerHTML = `
-                    <div class="poem-headr">
-                        <h2 class="poem-title">${p.title}</h2>
-                        <span class="poem-date">${p.date}</span>
-                    </div>
-                    <div class="poem-body">${p.body}</div>
-                    <div class="sentiment-section">
-                        <h4>My Sentiments</h4>
-                        <p class="sentiment-text">${p.sentiment}</p>
-                    </div>
-                `;
-                container.appendChild(div);
-            });
-
-            document.getElementById('pageTracker').innerText = `Viewing Page ${currentPage + 1} of ${Math.ceil(poems.length / perPage)}`;
-            document.getElementById('prevBtn').disabled = currentPage === 0;
-            document.getElementById('nextBtn').disabled = end >= poems.length;
-            
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        function changePage(dir) {
-            currentPage += dir;
-            displayPoems();
-        }
-
-        // Initialize
-        displayPoems();
     </script>
 </body>
-                </html>
+</html>
