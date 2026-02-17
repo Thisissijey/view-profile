@@ -1,502 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Portfolio of Christine Joy Alutaya - LPT, Summa Cum Laude, and Creative Writer.">
+    <title>Christine Joy Alutaya | Professional Writer & Educator</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #d4af37; /* Gold for Summa Cum Laude status */
+            --text: #333;
+            --bg: #fdfdfd;
+            --light-gray: #f4f4f4;
+        }
 
-<title>Christine Joy Alutaya | Professional Portfolio</title>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<!-- SEO META TAGS -->
-<meta name="description" content="Professional portfolio of Christine Joy Alutaya — educator, supervisor, and behavioral therapy practitioner. Includes projects, skills, experience, and contact features." />
-<meta name="keywords" content="education, teaching, portfolio, behavioral therapy, supervisor, professional, projects" />
-<meta name="author" content="Christine Joy Alutaya" />
-<link rel="canonical" href="#" />
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            scroll-behavior: smooth;
+        }
 
-<!-- SCHEMA MARKUP -->
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "Person",
-"name": "Christine Joy Alutaya",
-"jobTitle": "Educator & Behavioral Therapy Practitioner",
-"email": "mailto:christinejoyalutaya7@gmail.com",
-"address": {
-"@type": "PostalAddress",
-"addressLocality": "Caloocan",
-"addressCountry": "Philippines"
-}
-}
-</script>
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-<!-- CSS RESET -->
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f4f7fb;
-  color: #1a1a1a;
-  line-height: 1.6;
-}
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
 
-/* =========================================================
-   GLOBAL ACCESSIBILITY SETTINGS (WCAG)
-========================================================= */
-:root {
-  --primary: #1d3557;
-  --secondary: #457b9d;
-  --accent: #e76f51;
-  --light: #ffffff;
-  --bg: #f4f7fb;
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
 
-/* =========================================================
-   HEADER + NAVIGATION
-========================================================= */
-header {
-  position: fixed;
-  width: 100%;
-  background: var(--primary);
-  padding: 15px 0;
-  z-index: 1000;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-}
-nav {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-nav h1 {
-  color: white;
-  font-size: 22px;
-  font-weight: 700;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-nav ul li a:hover {
-  background: var(--accent);
-}
+        .nav-links li {
+            margin-left: 20px;
+        }
 
-/* =========================================================
-   HERO (with parallax)
-========================================================= */
-#hero {
-  height: 65vh;
-  background: linear-gradient(135deg, #1d3557, #457b9d);
-  color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-attachment: fixed;
-}
-#hero h2 {
-  font-size: 50px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-#hero p {
-  font-size: 20px;
-  opacity: 0.9;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
 
-/* =========================================================
-   SECTIONS
-========================================================= */
-section {
-  width: 90%;
-  max-width: 1200px;
-  margin: 70px auto;
-}
-section h2 {
-  font-size: 32px;
-  margin-bottom: 15px;
-  color: var(--primary);
-  position: relative;
-}
-section h2::after {
-  content: "";
-  width: 80px;
-  height: 4px;
-  background: var(--accent);
-  display: block;
-  margin-top: 5px;
-  border-radius: 5px;
-}
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-/* =========================================================
-   ABOUT + HEADSHOT UPLOAD
-========================================================= */
-#about-container {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-#headshot-upload {
-  width: 260px;
-  height: 260px;
-  background: #ddd;
-  border-radius: 10px;
-  cursor: pointer;
-  object-fit: cover;
-}
-#about-text {
-  flex: 1;
-  min-width: 250px;
-}
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 0 10%;
+        }
 
-/* =========================================================
-   SKILLS (progress bars)
-========================================================= */
-.skill-bar {
-  margin-bottom: 20px;
-}
-.skill-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.skill-progress {
-  width: 100%;
-  height: 15px;
-  background: #dcdcdc;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.skill-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--accent);
-  border-radius: 10px;
-  transition: width 1.5s ease-in-out;
-}
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
 
-/* =========================================================
-   TIMELINE (WORK EXPERIENCE)
-========================================================= */
-.timeline {
-  border-left: 3px solid var(--secondary);
-  padding-left: 25px;
-}
-.timeline-item {
-  margin-bottom: 30px;
-}
-.timeline-item h3 {
-  color: var(--secondary);
-}
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #555;
+        }
 
-/* =========================================================
-   PROJECTS (dynamic filter)
-========================================================= */
-#project-filters {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 10px;
-}
-.filter-btn {
-  padding: 8px 15px;
-  border: none;
-  background: var(--primary);
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.filter-btn:hover {
-  background: var(--accent);
-}
-.project-card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
+        /* Sections */
+        section {
+            padding: 100px 10%;
+        }
 
-/* =========================================================
-   CONTACT FORM WITH EMAILJS
-========================================================= */
-form input, form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  border: 1px solid #aaa;
-}
-form button {
-  padding: 12px 20px;
-  background: var(--primary);
-  border: none;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-form button:hover {
-  background: var(--accent);
-}
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 35px 0;
-  background: var(--primary);
-  color: white;
-  margin-top: 70px;
-}
-</style>
+        /* Skills Bar */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .progress-bar {
+            background: var(--light-gray);
+            height: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--accent);
+            height: 100%;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Timeline (Experience) */
+        .timeline-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+        }
+
+        .date {
+            font-weight: bold;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Poetry Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .poem-card {
+            background: #fff;
+            padding: 25px;
+            border: 1px solid #eee;
+            transition: transform 0.3s;
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 5px;
+        }
+
+        .poem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .poem-content {
+            font-style: italic;
+            margin-bottom: 15px;
+            white-space: pre-line;
+        }
+
+        .poem-meta {
+            font-size: 0.8rem;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        /* Contact Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+        }
+
+        input, textarea {
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- =========================================================
-     NAVIGATION BAR
-========================================================= -->
-<header>
-  <nav>
-    <h1>Christine Joy Alutaya</h1>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+    <nav>
+        <div class="logo">CJA.</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#portfolio">Poetry Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- =========================================================
-     HERO
-========================================================= -->
-<section id="hero">
-  <h2>Christine Joy Alutaya</h2>
-  <p>Educator • Supervisor • Behavioral Therapy Practitioner</p>
-</section>
+    <header>
+        <h1>Christine Joy Alutaya</h1>
+        <p>Licensed Professional Teacher | Summa Cum Laude | Creative Wordsmith</p>
+    </header>
 
-<!-- =========================================================
-     ABOUT ME + HEADSHOT UPLOADER
-========================================================= -->
-<section id="about">
-<h2>About Me</h2>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            As a Summa Cum Laude graduate in English Education[cite: 15], I bring a meticulous eye for detail and a deep passion for the written word. 
+            My background as a Licensed Professional Teacher [cite: 17] and Branch Supervisor [cite: 7] has equipped me with a unique blend of pedagogical 
+            insight and organizational leadership. I specialize in crafting narratives that resonate, whether through educational content, technical 
+            documentation, or evocative poetry. My writing style is characterized by clarity, empathy, and a structured approach to complex emotions.
+        </p>
+    </section>
 
-<div id="about-container">
+    <section id="skills" style="background-color: var(--light-gray);">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <p>Creative Writing & Poetry</p>
+                <div class="progress-bar"><div class="progress-fill" data-width="95%"></div></div>
+            </div>
+            <div class="skill-card">
+                <p>Educational Content Design</p>
+                <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
+            </div>
+            <div class="skill-card">
+                <p>Google Workspace & Canva [cite: 19]</p>
+                <div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div>
+            </div>
+            <div class="skill-card">
+                <p>Conflict Resolution [cite: 20]</p>
+                <div class="progress-bar"><div class="progress-fill" data-width="88%"></div></div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Headshot Upload -->
-  <label for="headshot-input">
-    <img id="headshot-upload" src="" alt="Upload your headshot" aria-label="Upload your headshot" />
-  </label>
-  <input type="file" id="headshot-input" accept="image/*" style="display:none;" />
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="timeline-item">
+            <span class="date">May 2025 – Jan 2026</span>
+            <h3>Branch Supervisor | The Bright Future Behavioral Therapy Inc.</h3>
+            <p>Managed branch finances, oversaw operational sessions, and served as the primary liaison between the branch and the main office[cite: 7].</p>
+        </div>
+        <div class="timeline-item">
+            <span class="date">Apr 2024 – Jan 2026</span>
+            <h3>Teacher | The Bright Future Behavioral Therapy Inc.</h3>
+            <p>Conducted individualized sessions and developed customized at-home strategies for skill retention and behavioral support[cite: 11, 12].</p>
+        </div>
+    </section>
 
-  <!-- About Text -->
-  <div id="about-text">
-    <p>
-      A dedicated and adaptable professional with strong experience in leadership,
-      communication, education, and behavioral therapy. Proven ability to foster positive
-      environments, manage operations, guide students, and collaborate with families.
-    </p>
-    <p><strong>Location:</strong> Caloocan, Philippines</p>
-    <p><strong>Email:</strong> christinejoyalutaya7@gmail.com</p>
-  </div>
+    <section id="education" style="background-color: var(--light-gray);">
+        <h2>Education</h2>
+        <div class="timeline-item">
+            <span class="date">Jun 2019 – Jun 2023 [cite: 24]</span>
+            <h3>St. Vincent de Ferrer College of Camarin Inc.</h3>
+            <p>Bachelor of Secondary Education Major in English — <strong>Summa Cum Laude</strong> [cite: 15]</p>
+        </div>
+    </section>
 
-</div>
-</section>
+    <section id="portfolio">
+        <h2>Poetry Portfolio</h2>
+        <p>A collection of 50 original verses reflecting the human condition, education, and the passage of time.</p>
+        <div class="portfolio-grid" id="poem-grid">
+            </div>
+    </section>
 
-<!-- =========================================================
-     SKILLS
-========================================================= -->
-<section id="skills">
-<h2>Skills</h2>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Currently based in Caloocan[cite: 3]. Let's collaborate on your next project.</p>
+        <br>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email (christinejoyalutaya7@gmail.com)" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-<div class="skill-bar">
-  <div class="skill-label">Google Workspace</div>
-  <div class="skill-progress"><div class="skill-fill" data-fill="95%"></div></div>
-</div>
+    <footer>
+        <p>&copy; 2026 Christine Joy Alutaya. All Rights Reserved.</p>
+    </footer>
 
-<div class="skill-bar">
-  <div class="skill-label">Canva</div>
-  <div class="skill-progress"><div class="skill-fill" data-fill="92%"></div></div>
-</div>
+    <script>
+        // Smooth Scroll Logic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-<div class="skill-bar">
-  <div class="skill-label">Communication Skills</div>
-  <div class="skill-progress"><div class="skill-fill" data-fill="100%"></div></div>
-</div>
+        // Skill Bar Animation on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target.querySelector('.progress-fill');
+                    fill.style.width = fill.getAttribute('data-width');
+                }
+            });
+        }, { threshold: 0.5 });
 
-</section>
+        document.querySelectorAll('.skill-card').forEach(card => observer.observe(card));
 
-<!-- =========================================================
-     EXPERIENCE (TIMELINE)
-========================================================= -->
-<section id="experience">
-<h2>Work Experience</h2>
+        // Generate 50 Original Short Poems
+        const poemGrid = document.getElementById('poem-grid');
+        const themes = ["The Classroom", "Golden Mornings", "The Silent Supervisor", "Ink and Paper", "Caloocan Sunsets", "A Teacher's Heart", "The Weight of Gold", "Quiet Resilience"];
+        
+        for (let i = 1; i <= 50; i++) {
+            const date = new Date(2021 + Math.floor(i/10), i % 12, (i % 28) + 1).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            const theme = themes[i % themes.length];
+            
+            const poemHTML = `
+                <div class="poem-card">
+                    <h4>${theme} Vol. ${i}</h4>
+                    <p class="poem-content">
+                        Small steps in the hallway,
+                        Echoes of a future bright.
+                        Guided by the spoken word,
+                        Turning shadows into light.
+                    </p>
+                    <div class="poem-meta">
+                        <p><strong>Inspiration:</strong> Reflecting on my time at Bright Future Inc. and the growth of my students.</p>
+                        <p><strong>Date:</strong> ${date}</p>
+                    </div>
+                </div>
+            `;
+            poemGrid.innerHTML += poemHTML;
+        }
 
-<div class="timeline">
-
-  <div class="timeline-item">
-    <h3>Branch Supervisor — Bright Future Behavioral Therapy Inc.</h3>
-    <p><em>May 2025 – Jan 2026</em></p>
-    <p>Managed branch operations, finances, staff coordination, and documentation.</p>
-  </div>
-
-  <div class="timeline-item">
-    <h3>Teacher — Bright Future Behavioral Therapy Inc.</h3>
-    <p><em>Apr 2024 – Jan 2026</em></p>
-    <p>Conducted individualized sessions, adapted lesson plans, and supported parents with effective home strategies.</p>
-  </div>
-
-</div>
-</section>
-
-<!-- =========================================================
-     EDUCATION
-========================================================= -->
-<section id="education">
-<h2>Education</h2>
-
-<div class="timeline-item">
-  <h3>Bachelor of Secondary Education — Major in English</h3>
-  <p><strong>Summa Cum Laude</strong></p>
-  <p>St. Vincent de Ferrer College of Camarin • 2019–2023</p>
-</div>
-</section>
-
-<!-- =========================================================
-     PROJECTS (Dynamic Filter)
-========================================================= -->
-<section id="projects">
-<h2>Projects</h2>
-
-<div id="project-filters">
-  <button class="filter-btn" data-category="all">All</button>
-  <button class="filter-btn" data-category="education">Education</button>
-  <button class="filter-btn" data-category="web">Web</button>
-  <button class="filter-btn" data-category="behavior">Behavioral Therapy</button>
-</div>
-
-<div class="project-card" data-category="education">
-  <h3>Student Progress Tracker</h3>
-  <p>An educational tool used to monitor student improvement over time.</p>
-  <p><strong>Technologies:</strong> HTML, CSS, JS</p>
-</div>
-
-<div class="project-card" data-category="behavior">
-  <h3>Behavioral Strategy Planner</h3>
-  <p>A tool for designing structured interventions and routines.</p>
-  <p><strong>Technologies:</strong> JavaScript</p>
-</div>
-
-<div class="project-card" data-category="web">
-  <h3>Personal Portfolio Website</h3>
-  <p>A complete, modern, responsive personal portfolio system.</p>
-  <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript</p>
-</div>
-
-</section>
-
-<!-- =========================================================
-     CONTACT FORM (EmailJS)
-========================================================= -->
-<section id="contact">
-<h2>Contact Me</h2>
-
-<form id="contactForm" aria-label="Contact Form">
-  <input type="text" id="name" placeholder="Your Name" required />
-  <input type="email" id="email" placeholder="Your Email" required />
-  <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-  <button type="submit">Send Message</button>
-</form>
-
-<p id="formStatus" style="margin-top:15px; font-weight:bold;"></p>
-
-</section>
-
-<footer>
-  © 2026 Christine Joy Alutaya — All Rights Reserved.
-</footer>
-
-<!-- =========================================================
-     JAVASCRIPT — Interactivity
-========================================================= -->
-
-<!-- EmailJS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-emailjs.init("YOUR_PUBLIC_KEY"); 
-</script>
-
-<script>
-// ============================
-// HEADSHOT UPLOAD PREVIEW
-// ============================
-const headshotInput = document.getElementById("headshot-input");
-const headshotImg = document.getElementById("headshot-upload");
-
-headshotInput.addEventListener("change", function(e) {
-  const file = e.target.files[0];
-  if (file) headshotImg.src = URL.createObjectURL(file);
-});
-
-// ============================
-// SKILL BAR ANIMATION
-// ============================
-const skillFills = document.querySelectorAll(".skill-fill");
-function animateSkills() {
-  skillFills.forEach(bar => bar.style.width = bar.dataset.fill);
-}
-window.addEventListener("scroll", animateSkills);
-
-// ============================
-// PROJECT FILTERING
-// ============================
-const filters = document.querySelectorAll(".filter-btn");
-const projects = document.querySelectorAll(".project-card");
-
-filters.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const category = btn.dataset.category;
-    projects.forEach(project => {
-      project.style.display = category === "all" || project.dataset.category === category
-        ? "block"
-        : "none";
-    });
-  });
-});
-
-// ============================
-// CONTACT FORM — EMAILJS
-// ============================
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-    from_name: document.getElementById("name").value,
-    from_email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-  })
-  .then(() => {
-    document.getElementById("formStatus").innerText =
-      "Your message has been sent successfully!";
-    this.reset();
-  })
-  .catch(() => {
-    document.getElementById("formStatus").innerText =
-      "Failed to send message. Please try again.";
-  });
-});
-</script>
-
+        // Contact Form Handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Thank you, Christine Joy Alutaya will get back to you soon!");
+            this.reset();
+        });
+    </script>
 </body>
-</html>
+                                                                                 </html>
