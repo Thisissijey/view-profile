@@ -1,537 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Christine Joy Alutaya | Professional Portfolio</title>
 
-<!-- SEO -->
-<meta name="description" content="Interactive professional portfolio of Christine Joy Alutaya — educator, leader, behavioral therapy practitioner, and creative writer.">
-<meta name="keywords" content="christine joy alutaya, portfolio, educator, supervisor, teacher, therapy, creative">
-<meta name="author" content="Christine Joy Alutaya">
+<!-- SEO META TAGS -->
+<meta name="description" content="Professional portfolio of Christine Joy Alutaya — educator, supervisor, and behavioral therapy practitioner. Includes projects, skills, experience, and contact features." />
+<meta name="keywords" content="education, teaching, portfolio, behavioral therapy, supervisor, professional, projects" />
+<meta name="author" content="Christine Joy Alutaya" />
+<link rel="canonical" href="#" />
 
+<!-- SCHEMA MARKUP -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Person",
+"name": "Christine Joy Alutaya",
+"jobTitle": "Educator & Behavioral Therapy Practitioner",
+"email": "mailto:christinejoyalutaya7@gmail.com",
+"address": {
+"@type": "PostalAddress",
+"addressLocality": "Caloocan",
+"addressCountry": "Philippines"
+}
+}
+</script>
+
+<!-- CSS RESET -->
 <style>
-
-/* =========================================
-   CORE COLORS & DARK MODE VARIABLES
-========================================= */
-:root {
-    --primary: #1d3557;
-    --secondary: #457b9d;
-    --accent: #e76f51;
-    --light: #ffffff;
-    --bg: #f1f5f9;
-    --text: #222;
-    --hero-gradient: linear-gradient(135deg, #1d3557, #457b9d, #e76f51);
-}
-
-body.dark {
-    --bg: #0b0f14;
-    --text: #f1f1f1;
-    --light: #111820;
-    --primary: #0e2038;
-    --secondary: #2d4b66;
-    --accent: #ff7f50;
-}
-
-/* =========================================
-   GLOBAL STYLES
-========================================= */
-* {
-    margin: 0; padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
-    scroll-behavior: smooth;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
-    transition: 0.4s ease;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f7fb;
+  color: #1a1a1a;
+  line-height: 1.6;
 }
 
-/* Moving background animation */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(0,0,0,0.06), transparent 60%);
-    animation: moveBg 25s linear infinite;
-    z-index: -10;
-}
-@keyframes moveBg {
-    from { transform: translate(0,0); }
-    to   { transform: translate(-25%, -25%); }
+/* =========================================================
+   GLOBAL ACCESSIBILITY SETTINGS (WCAG)
+========================================================= */
+:root {
+  --primary: #1d3557;
+  --secondary: #457b9d;
+  --accent: #e76f51;
+  --light: #ffffff;
+  --bg: #f4f7fb;
 }
 
-/* =========================================
-   FLOATING SIDEBAR NAVIGATION
-========================================= */
-#sidebar {
-    position: fixed;
-    top: 50%; left: 20px;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    z-index: 999;
-}
-#sidebar a {
-    background: var(--primary);
-    color: white;
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-    transition: 0.3s;
-}
-#sidebar a:hover {
-    background: var(--accent);
-    transform: scale(1.1);
-}
-
-/* =========================================
-   TOP NAVIGATION BAR
-========================================= */
+/* =========================================================
+   HEADER + NAVIGATION
+========================================================= */
 header {
-    position: fixed;
-    top: 0; width: 100%;
-    padding: 15px 25px;
-    background: var(--primary);
-    color: white;
-    z-index: 999;
-    transition: 0.3s;
+  position: fixed;
+  width: 100%;
+  background: var(--primary);
+  padding: 15px 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
 }
-header.small { padding: 8px 25px; }
-
 nav {
-    max-width: 1250px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-nav .brand {
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+nav h1 {
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
 }
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 nav ul li a {
-    color: white;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 4px;
-    transition: 0.3s;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: 0.3s;
 }
 nav ul li a:hover {
-    background: var(--accent);
+  background: var(--accent);
 }
 
-/* Dark mode button */
-#darkToggle {
-    padding: 6px 14px;
-    background: var(--accent);
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    font-size: 14px;
-    margin-left: 10px;
-}
-
-/* =========================================
-   HERO SECTION
-========================================= */
+/* =========================================================
+   HERO (with parallax)
+========================================================= */
 #hero {
-    padding-top: 150px;
-    padding-bottom: 120px;
-    text-align: center;
-    background: var(--hero-gradient);
-    color: white;
+  height: 65vh;
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-attachment: fixed;
 }
-#hero h1 {
-    font-size: 55px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+#hero h2 {
+  font-size: 50px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
-#hero p { font-size: 22px; }
-
-/* Animated line */
-#hero svg {
-    margin-top: 20px;
-    width: 200px;
-    stroke: white;
-    stroke-width: 3;
-    animation: dash 3s linear infinite;
-}
-@keyframes dash {
-    to { stroke-dashoffset: -1000; }
+#hero p {
+  font-size: 20px;
+  opacity: 0.9;
 }
 
-/* =========================================
+/* =========================================================
    SECTIONS
-========================================= */
+========================================================= */
 section {
-    max-width: 1200px;
-    margin: 80px auto;
-    padding: 20px;
-    opacity: 0;
-    transform: translateY(25px);
-    transition: 0.8s ease;
+  width: 90%;
+  max-width: 1200px;
+  margin: 70px auto;
 }
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
+section h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: var(--primary);
+  position: relative;
 }
-
-h2 {
-    font-size: 30px;
-    color: var(--primary);
-    position: relative;
-    margin-bottom: 25px;
-}
-h2::after {
-    content: "";
-    width: 60px; height: 4px;
-    background: var(--accent);
-    position: absolute;
-    bottom: -8px; left: 0;
-    border-radius: 5px;
+section h2::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  display: block;
+  margin-top: 5px;
+  border-radius: 5px;
 }
 
-/* INFO CARDS */
-.card {
-    background: var(--light);
-    padding: 25px;
-    margin-top: 15px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.08);
-    transition: 0.3s;
+/* =========================================================
+   ABOUT + HEADSHOT UPLOAD
+========================================================= */
+#about-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
 }
-.card:hover {
-    transform: translateY(-5px);
+#headshot-upload {
+  width: 260px;
+  height: 260px;
+  background: #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  object-fit: cover;
+}
+#about-text {
+  flex: 1;
+  min-width: 250px;
 }
 
-/* =========================================
-   SKILL BARS
-========================================= */
-.skill-container {
-    margin: 15px 0;
+/* =========================================================
+   SKILLS (progress bars)
+========================================================= */
+.skill-bar {
+  margin-bottom: 20px;
 }
 .skill-label {
-    font-weight: bold;
-    margin-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
-.skill-bar {
-    width: 100%; height: 15px;
-    background: #ccc;
-    border-radius: 20px;
-    overflow: hidden;
+.skill-progress {
+  width: 100%;
+  height: 15px;
+  background: #dcdcdc;
+  border-radius: 10px;
+  overflow: hidden;
 }
-.skill-bar-fill {
-    height: 100%;
-    width: 0%;
-    background: var(--accent);
-    border-radius: 20px;
-    transition: width 2s ease;
-}
-
-/* =========================================
-   POEMS
-========================================= */
-.poem {
-    padding: 22px;
-    background: var(--light);
-    border-left: 4px solid var(--accent);
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-style: italic;
-    white-space: pre-wrap;
+.skill-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 10px;
+  transition: width 1.5s ease-in-out;
 }
 
-/* =========================================
-   ACCORDION
-========================================= */
-.accordion-item {
-    background: var(--light);
-    border-radius: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;
+/* =========================================================
+   TIMELINE (WORK EXPERIENCE)
+========================================================= */
+.timeline {
+  border-left: 3px solid var(--secondary);
+  padding-left: 25px;
 }
-.accordion-header {
-    padding: 15px;
-    background: var(--secondary);
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
+.timeline-item {
+  margin-bottom: 30px;
 }
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    background: var(--light);
-    padding: 0 15px;
-    transition: 0.4s ease;
+.timeline-item h3 {
+  color: var(--secondary);
 }
 
-/* =========================================
-   CONTACT FORM
-========================================= */
+/* =========================================================
+   PROJECTS (dynamic filter)
+========================================================= */
+#project-filters {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+.filter-btn {
+  padding: 8px 15px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.filter-btn:hover {
+  background: var(--accent);
+}
+.project-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+/* =========================================================
+   CONTACT FORM WITH EMAILJS
+========================================================= */
 form input, form textarea {
-    width: 100%;
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #bbb;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
 }
 form button {
-    padding: 12px;
-    background: var(--primary);
-    color: white;
-    border-radius: 8px;
-    margin-top: 10px;
-    cursor: pointer;
+  padding: 12px 20px;
+  background: var(--primary);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
 }
-#status {
-    margin-top: 10px;
-    color: var(--accent);
-    font-weight: bold;
+form button:hover {
+  background: var(--accent);
 }
 
-/* =========================================
-   FOOTER
-========================================= */
+/* FOOTER */
 footer {
-    background: var(--primary);
-    padding: 35px;
-    color: white;
-    text-align: center;
-    margin-top: 80px;
+  text-align: center;
+  padding: 35px 0;
+  background: var(--primary);
+  color: white;
+  margin-top: 70px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING SIDEBAR NAV -->
-<div id="sidebar">
-    <a href="#hero">H</a>
-    <a href="#about">A</a>
-    <a href="#experience">E</a>
-    <a href="#education">Ed</a>
-    <a href="#skills">S</a>
-    <a href="#poems">P</a>
-    <a href="#contact">C</a>
-</div>
-
-<!-- HEADER -->
-<header id="header">
-    <nav>
-        <div class="brand">Christine Joy Alutaya</div>
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#poems">Poems</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div id="darkToggle">Dark mode</div>
-    </nav>
+<!-- =========================================================
+     NAVIGATION BAR
+========================================================= -->
+<header>
+  <nav>
+    <h1>Christine Joy Alutaya</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 
-<!-- HERO -->
-<section id="hero" class="visible">
-    <h1>christine joy alutaya</h1>
-    <p>educator • leader • behavioral therapy practitioner • creative</p>
-
-    <svg viewBox="0 0 200 50">
-        <path d="M10 25 Q 95 -10 190 25" fill="none" stroke-dasharray="200" />
-    </svg>
+<!-- =========================================================
+     HERO
+========================================================= -->
+<section id="hero">
+  <h2>Christine Joy Alutaya</h2>
+  <p>Educator • Supervisor • Behavioral Therapy Practitioner</p>
 </section>
 
-<!-- ABOUT -->
+<!-- =========================================================
+     ABOUT ME + HEADSHOT UPLOADER
+========================================================= -->
 <section id="about">
-    <h2>About Me</h2>
-    <div class="card">
-        <p>I am a dedicated professional with expertise in education, behavioral therapy,
-            communication, leadership, and student development. I work with empathy, structure,
-            and clarity, supporting every individual with integrity and purpose.</p>
+<h2>About Me</h2>
 
-        <p><strong>Location:</strong> Caloocan</p>
-        <p><strong>Phone:</strong> +63 946 691 4473</p>
-        <p><strong>Email:</strong> christinejoyalutaya7@gmail.com</p>
-    </div>
+<div id="about-container">
+
+  <!-- Headshot Upload -->
+  <label for="headshot-input">
+    <img id="headshot-upload" src="" alt="Upload your headshot" aria-label="Upload your headshot" />
+  </label>
+  <input type="file" id="headshot-input" accept="image/*" style="display:none;" />
+
+  <!-- About Text -->
+  <div id="about-text">
+    <p>
+      A dedicated and adaptable professional with strong experience in leadership,
+      communication, education, and behavioral therapy. Proven ability to foster positive
+      environments, manage operations, guide students, and collaborate with families.
+    </p>
+    <p><strong>Location:</strong> Caloocan, Philippines</p>
+    <p><strong>Email:</strong> christinejoyalutaya7@gmail.com</p>
+  </div>
+
+</div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-    <h2>Experience</h2>
-    <div class="card">
-        <h3>Branch Supervisor</h3>
-        <p><em>Bright Future Behavioral Therapy Inc. — May 2025 to Jan 2026</em></p>
-        <p>Oversaw operations, documentation, finances, communication, and logistics.</p>
-    </div>
-    <div class="card">
-        <h3>Teacher</h3>
-        <p><em>Bright Future Behavioral Therapy Inc. — Apr 2024 to Jan 2026</em></p>
-        <p>Conducted individualized sessions, supported families, and guided behavior improvement programs.</p>
-    </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-    <h2>Education</h2>
-    <div class="card">
-        <h3>Bachelor of Secondary Education — Major in English</h3>
-        <p>St. Vincent de Ferrer College of Camarin Inc.</p>
-        <p><strong>Summa Cum Laude</strong> — 2019–2023</p>
-    </div>
-</section>
-
-<!-- SKILLS + animated bars -->
+<!-- =========================================================
+     SKILLS
+========================================================= -->
 <section id="skills">
-    <h2>Skills</h2>
+<h2>Skills</h2>
 
-    <div class="card">
-        <h3>Technical Skills</h3>
+<div class="skill-bar">
+  <div class="skill-label">Google Workspace</div>
+  <div class="skill-progress"><div class="skill-fill" data-fill="95%"></div></div>
+</div>
 
-        <div class="skill-container">
-            <div class="skill-label">Google Workspace</div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-fill="95%"></div></div>
-        </div>
+<div class="skill-bar">
+  <div class="skill-label">Canva</div>
+  <div class="skill-progress"><div class="skill-fill" data-fill="92%"></div></div>
+</div>
 
-        <div class="skill-container">
-            <div class="skill-label">Canva</div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-fill="90%"></div></div>
-        </div>
-    </div>
+<div class="skill-bar">
+  <div class="skill-label">Communication Skills</div>
+  <div class="skill-progress"><div class="skill-fill" data-fill="100%"></div></div>
+</div>
 
-    <div class="card">
-        <h3>Soft Skills</h3>
-        <div class="accordion-item">
-            <div class="accordion-header">Professionalism</div>
-            <div class="accordion-content"><p>Maintains high ethical standards and work discipline.</p></div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Adaptability</div>
-            <div class="accordion-content"><p>Thrives in changing environments.</p></div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Conflict Resolution</div>
-            <div class="accordion-content"><p>Facilitates positive communication and solutions.</p></div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Collaboration</div>
-            <div class="accordion-content"><p>Works effectively across teams and roles.</p></div>
-        </div>
-    </div>
 </section>
 
-<!-- POEMS -->
-<section id="poems">
-    <h2>original poems</h2>
+<!-- =========================================================
+     EXPERIENCE (TIMELINE)
+========================================================= -->
+<section id="experience">
+<h2>Work Experience</h2>
 
-    <div class="poem">
-        in the quiet corners of my becoming  
-        i learn that peace does not arrive loudly  
-        but settles softly  
-        like a gentle breath after a long day
-    </div>
+<div class="timeline">
 
-    <div class="poem">
-        i rise in small ways  
-        unnoticed sometimes  
-        but every inch forward  
-        is a victory the universe applauds
-    </div>
+  <div class="timeline-item">
+    <h3>Branch Supervisor — Bright Future Behavioral Therapy Inc.</h3>
+    <p><em>May 2025 – Jan 2026</em></p>
+    <p>Managed branch operations, finances, staff coordination, and documentation.</p>
+  </div>
 
-    <div class="poem">
-        i am a work in progress  
-        stitched with hope  
-        and held together  
-        by quiet courage
-    </div>
+  <div class="timeline-item">
+    <h3>Teacher — Bright Future Behavioral Therapy Inc.</h3>
+    <p><em>Apr 2024 – Jan 2026</em></p>
+    <p>Conducted individualized sessions, adapted lesson plans, and supported parents with effective home strategies.</p>
+  </div>
 
-    <div class="poem">
-        someday you will understand  
-        that slow blooming  
-        is still blooming  
-        and light finds every flower in time
-    </div>
+</div>
 </section>
 
-<!-- CONTACT -->
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
+<section id="education">
+<h2>Education</h2>
+
+<div class="timeline-item">
+  <h3>Bachelor of Secondary Education — Major in English</h3>
+  <p><strong>Summa Cum Laude</strong></p>
+  <p>St. Vincent de Ferrer College of Camarin • 2019–2023</p>
+</div>
+</section>
+
+<!-- =========================================================
+     PROJECTS (Dynamic Filter)
+========================================================= -->
+<section id="projects">
+<h2>Projects</h2>
+
+<div id="project-filters">
+  <button class="filter-btn" data-category="all">All</button>
+  <button class="filter-btn" data-category="education">Education</button>
+  <button class="filter-btn" data-category="web">Web</button>
+  <button class="filter-btn" data-category="behavior">Behavioral Therapy</button>
+</div>
+
+<div class="project-card" data-category="education">
+  <h3>Student Progress Tracker</h3>
+  <p>An educational tool used to monitor student improvement over time.</p>
+  <p><strong>Technologies:</strong> HTML, CSS, JS</p>
+</div>
+
+<div class="project-card" data-category="behavior">
+  <h3>Behavioral Strategy Planner</h3>
+  <p>A tool for designing structured interventions and routines.</p>
+  <p><strong>Technologies:</strong> JavaScript</p>
+</div>
+
+<div class="project-card" data-category="web">
+  <h3>Personal Portfolio Website</h3>
+  <p>A complete, modern, responsive personal portfolio system.</p>
+  <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript</p>
+</div>
+
+</section>
+
+<!-- =========================================================
+     CONTACT FORM (EmailJS)
+========================================================= -->
 <section id="contact">
-    <h2>Contact</h2>
+<h2>Contact Me</h2>
 
-    <form id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Your Email" required />
-        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-        <p id="status"></p>
-    </form>
+<form id="contactForm" aria-label="Contact Form">
+  <input type="text" id="name" placeholder="Your Name" required />
+  <input type="email" id="email" placeholder="Your Email" required />
+  <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+
+<p id="formStatus" style="margin-top:15px; font-weight:bold;"></p>
+
 </section>
 
 <footer>
-    © 2026 Christine Joy Alutaya — All Rights Reserved
+  © 2026 Christine Joy Alutaya — All Rights Reserved.
 </footer>
 
-<!-- =========================================
-     JAVASCRIPT INTERACTIONS
-========================================= -->
+<!-- =========================================================
+     JAVASCRIPT — Interactivity
+========================================================= -->
+
+<!-- EmailJS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
+emailjs.init("YOUR_PUBLIC_KEY"); 
+</script>
 
-/* Dark mode */
-document.getElementById("darkToggle").onclick = () => {
-    document.body.classList.toggle("dark");
-};
+<script>
+// ============================
+// HEADSHOT UPLOAD PREVIEW
+// ============================
+const headshotInput = document.getElementById("headshot-input");
+const headshotImg = document.getElementById("headshot-upload");
 
-/* Header shrink */
-window.addEventListener("scroll", () => {
-    document.getElementById("header").classList.toggle("small", window.scrollY > 50);
+headshotInput.addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  if (file) headshotImg.src = URL.createObjectURL(file);
 });
 
-/* Reveal sections */
-function revealSections() {
-    document.querySelectorAll("section").forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 120) sec.classList.add("visible");
-    });
+// ============================
+// SKILL BAR ANIMATION
+// ============================
+const skillFills = document.querySelectorAll(".skill-fill");
+function animateSkills() {
+  skillFills.forEach(bar => bar.style.width = bar.dataset.fill);
 }
-window.addEventListener("scroll", revealSections);
-revealSections();
+window.addEventListener("scroll", animateSkills);
 
-/* Accordion */
-document.querySelectorAll(".accordion-header").forEach(header => {
-    header.onclick = () => {
-        const panel = header.nextElementSibling;
-        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
-    };
+// ============================
+// PROJECT FILTERING
+// ============================
+const filters = document.querySelectorAll(".filter-btn");
+const projects = document.querySelectorAll(".project-card");
+
+filters.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const category = btn.dataset.category;
+    projects.forEach(project => {
+      project.style.display = category === "all" || project.dataset.category === category
+        ? "block"
+        : "none";
+    });
+  });
 });
 
-/* Skill bar animation */
-function animateSkillBars() {
-    document.querySelectorAll(".skill-bar-fill").forEach(bar => {
-        bar.style.width = bar.dataset.fill;
-    });
-}
-window.addEventListener("scroll", animateSkillBars);
+// ============================
+// CONTACT FORM — EMAILJS
+// ============================
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-/* Contact form */
-document.getElementById("contactForm").addEventListener("submit", e => {
-    e.preventDefault();
-    document.getElementById("status").textContent = "your message has been received — thank you.";
-    e.target.reset();
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    from_name: document.getElementById("name").value,
+    from_email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  })
+  .then(() => {
+    document.getElementById("formStatus").innerText =
+      "Your message has been sent successfully!";
+    this.reset();
+  })
+  .catch(() => {
+    document.getElementById("formStatus").innerText =
+      "Failed to send message. Please try again.";
+  });
 });
 </script>
 
