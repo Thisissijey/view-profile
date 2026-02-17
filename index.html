@@ -3,280 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Blue Diary | Christine Joy Alutaya</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <title>The Choral of My Soul | Christine Joy Alutaya</title>
     <style>
         :root {
-            --sky-blue: #e0f2f1;
-            --ocean-depth: #006064;
-            --forest-green: #2d5a27;
-            --sand: #f5f5dc;
-            --twilight: #2c3e50;
-            --leaf: #81c784;
+            --sky-blue: #a2d2ff;
+            --ocean-depth: #0077b6;
+            --forest-green: #2d6a4f;
+            --sand: #f1f1e6;
+            --dusk-purple: #480ca8;
+            --text-dark: #1b263b;
+            --glass: rgba(255, 255, 255, 0.85);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(to bottom, #e0f7fa, #ffffff, #f1f8e9);
-            color: var(--twilight);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--sand);
+            color: var(--text-dark);
             line-height: 1.8;
-            overflow-x: hidden;
         }
 
-        /* Header & Aesthetic Backgrounds */
-        header {
+        /* Hero Section with Nature Background */
+        .hero {
             height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'); /* Ocean/Bay */
+            background-size: cover;
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), 
-                        url('https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-attachment: fixed;
             color: white;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            padding: 20px;
         }
 
-        .identity {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .sub-tag {
-            font-size: 1.2rem;
+        .hero h1 {
+            font-size: 4rem;
             letter-spacing: 5px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
             text-transform: uppercase;
-            border-top: 1px solid white;
-            border-bottom: 1px solid white;
-            padding: 10px 0;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--ocean-depth);
+        }
+
+        /* Content Sections */
+        section {
+            padding: 100px 10%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--forest-green);
         }
 
         /* About Section */
-        #about-diary {
-            padding: 100px 15%;
+        #about-me {
             background: white;
+            border-radius: 50px 50px 0 0;
+            margin-top: -50px;
             position: relative;
-            text-align: center;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
         }
 
-        .nature-divider {
-            font-size: 2rem;
-            margin: 20px 0;
-            color: var(--forest-green);
-        }
-
-        /* Poetry Grid */
-        #diary-entries {
-            padding: 80px 5%;
-            background: rgba(224, 242, 241, 0.5);
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
+        /* Diary/Poem Styles */
         .poem-card {
             background: white;
+            margin-bottom: 40px;
+            padding: 40px;
             border-radius: 15px;
-            padding: 30px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--sky-blue);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-bottom: 4px solid var(--ocean-depth);
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s ease;
         }
 
         .poem-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            background: var(--sky-blue);
+            transform: scale(1.01);
+            border-left-color: var(--ocean-depth);
         }
 
-        .poem-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--ocean-depth);
-            margin-bottom: 10px;
-        }
-
-        .date-stamp {
-            font-size: 0.8rem;
-            color: #999;
+        .poem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
-            display: block;
         }
 
-        /* Hidden Content */
-        .expanded-content {
-            display: none;
+        .poem-date {
+            font-family: monospace;
+            color: #888;
+        }
+
+        .poem-content {
+            display: none; /* Toggleable */
             margin-top: 20px;
             padding-top: 20px;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            animation: fadeIn 0.5s ease;
+            border-top: 1px solid #eee;
         }
 
-        .poem-verse {
+        .poem-body {
             font-style: italic;
-            color: var(--forest-green);
-            margin-bottom: 25px;
             white-space: pre-line;
             font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 30px;
         }
 
         .sentiment-box {
-            background: rgba(255,255,255,0.7);
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            color: var(--twilight);
+            background: #f9fdf9;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #555;
             line-height: 1.6;
+            border: 1px dashed var(--forest-green);
         }
 
-        .sentiment-box p {
+        .sentiment-box strong {
+            display: block;
             margin-bottom: 10px;
+            color: var(--forest-green);
+        }
+
+        /* Aesthetic Image Breaks */
+        .image-break {
+            height: 300px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 50px 0;
+            border-radius: 20px;
         }
 
         /* Footer */
         footer {
-            padding: 60px;
+            background: var(--text-dark);
+            color: white;
             text-align: center;
-            background: var(--twilight);
-            color: var(--sand);
+            padding: 50px 20px;
+            margin-top: 100px;
         }
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .floating-leaf {
-            position: fixed;
-            pointer-events: none;
-            z-index: 999;
-            opacity: 0.6;
-            animation: fall 10s linear infinite;
-        }
+        .reveal { animation: fadeIn 1s ease forwards; }
 
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(360deg); }
-        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1 class="identity">Christine Joy Alutaya</h1>
-        <p class="sub-tag">Poetry & Sentiments</p>
-    </header>
+    <div class="hero">
+        <h1>Christine Joy Alutaya</h1>
+        <p>A Sanctuary of Words & Nature</p>
+    </div>
 
-    <section id="about-diary">
-        <div class="nature-divider">🌊 🌲 ☁️</div>
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px;">My Private Verbiage</h2>
-        <p style="max-width: 700px; margin: 0 auto;">
-            This is where I breathe. Away from the noise of the world, I've gathered fifty fragments of my thoughts—written between the shorelines and the forest heights. These are not just poems; they are the whispers of <strong>Christine Joy Alutaya</strong>, recorded for the sake of remembering how it felt to be alive.
-        </p>
+    <nav>
+        <a href="#about-me">My Voice</a>
+        <a href="#poems">The Diary</a>
+        <a href="#reflection">Closing Thoughts</a>
+    </nav>
+
+    <section id="about-me">
+        <h2 class="section-title">Beyond the Summa Cum Laude</h2>
+        <div style="text-align: center; max-width: 800px; margin: auto;">
+            <p>I am more than the titles and the academic honors. I am <strong>Christine Joy Alutaya</strong>, and this space is my breathing room. Here, I trade my English education degree for the raw, unedited language of the heart. My writing is heavily influenced by the world outside my window—the way the tide retreats by the bay, the stubborn endurance of trees, and the shifting colors of the sky at dusk.</p>
+            <br>
+            <p>In this creative page, I invite you to see the world through my eyes. I believe that every moment, no matter how small, deserves a stanza. This isn't just a portfolio; it's a map of my growth from 2021 to today.</p>
+        </div>
     </section>
 
-    <section id="diary-entries">
-        <div class="grid-container" id="diaryGrid">
+    <div class="image-break" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80');"></div> <section id="poems">
+        <h2 class="section-title">My Chronological Verses</h2>
+        <div id="diary-container">
             </div>
     </section>
 
-    <footer>
-        <p>Handcrafted by Christine Joy Alutaya</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Reflecting the Sky, the Ocean, and the Trees.</p>
+    <div class="image-break" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80');"></div> <footer>
+        <p>Thank you for walking through my woods and sitting by my bay.</p>
+        <div style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">
+            &copy; 2026 Christine Joy Alutaya. All Rights Reserved. <br>
+            The content, poems, and sentiments expressed herein are the intellectual property of Christine Joy Alutaya.
+        </div>
     </footer>
 
     <script>
-        const diaryGrid = document.getElementById('diaryGrid');
-        
-        const themes = [
-            { title: "Ocean's Salt", icon: "🌊", topic: "the tides", nature: "by the bay" },
-            { title: "Pine Needle Paths", icon: "🌲", topic: "the forest floor", nature: "deep in the woods" },
-            { title: "Azure Silence", icon: "☁️", topic: "the open sky", nature: "under the clouds" },
-            { title: "Shoreline Echo", icon: "🐚", topic: "shells and sand", nature: "along the coast" },
-            { title: "Canopy Light", icon: "🌿", topic: "dappled sunlight", nature: "beneath the trees" },
-            { title: "Horizon Line", icon: "🌅", topic: "the setting sun", nature: "at the edge of the world" }
+        const diaryData = [
+            {
+                title: "April's First Breath",
+                date: "2021-04-12",
+                poem: "The wind carries a scent of salt and change,\nRearranging the dust upon my sill.\nI find it strange, how life feels new,\nYet the heart remains quite still.",
+                sentiment: "I remember writing this while sitting near the window during a particularly quiet afternoon. I was thinking about how much the world expects us to move fast, while nature just exists. It was a period of transition for me, and I felt like I was stuck between who I was and who I was becoming.",
+                theme: "Sky"
+            },
+            {
+                title: "The Bay at Midnight",
+                date: "2021-08-05",
+                poem: "Dark water laps against the wood,\nIn a language only the moon understands.\nI'd leave the world if I only could,\nAnd melt into the cooling sands.",
+                sentiment: "There's a specific kind of loneliness that hits you by the water at night. It's not a sad loneliness, but a vast one. I wanted to capture that feeling of wanting to be part of something bigger—like the ocean—instead of just a person with a name and a set of responsibilities.",
+                theme: "Ocean"
+            },
+            // ... (Generating entries to reach 50)
         ];
 
-        const diaryReflections = [
-            "I remember writing this while sitting on a damp log. The air felt heavy, like it was holding its breath before a storm. I was thinking about how we always try to fix things that aren't actually broken, just changing.",
-            "I was staring at the water for hours when these lines came to me. It's funny how the ocean never looks the same twice, yet it's always the same ocean. I felt a bit small that day, but in a good way.",
-            "This one was a bit of a struggle. I kept crossing out words because they felt too loud. I wanted it to feel like a whisper or the way a leaf falls—totally silent but inevitable.",
-            "I wrote this on my phone while walking. I almost tripped over a root because I was so focused on getting the rhythm right. It's raw, but I think I'll leave it exactly as it is.",
-            "Thinking about the sky makes me realize how much we overlook the things that are always there. I was feeling particularly grateful for the 'constant' things in my life when this flowed out."
-        ];
+        // helper to generate dates and filler content for demo purposes while keeping user's specific range
+        const topics = ["Tall Oaks", "Horizon Lines", "Morning Mist", "Rooted", "Currents", "The Canopy", "Petrichor", "Salt Air", "Driftwood", "High Tide", "Blue Hour", "Verdant Paths", "Cloud Watching", "Shelter", "The Clearing", "Riverbed", "Moss", "Starlight", "Echoes", "Fading Light", "New Leaves", "The Shoreline", "Wild Grass", "Quiet Storms", "Amber Skies", "Deep Roots", "Tidal Pools", "Whispering Pines", "Open Fields", "First Light", "The Ridge", "Valley Breath", "Stone and Silt", "Skyline", "Dusk Birds", "The Undergrowth", "Meadow Dreams", "Coastal Fog", "Cedar Scent", "Reflections", "Thaw", "Bloom", "Rain Dance", "Shadow Play", "The Pier", "Evening Dew", "Gull Cries", "Anchored"];
 
-        for (let i = 1; i <= 50; i++) {
-            const theme = themes[i % themes.length];
-            const date = new Date(2021, 3 + (i % 48), 1 + (i % 28));
-            const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            
-            // Limit dates to Feb 7 2026
-            const finalDate = date > new Date(2026, 1, 7) ? "February 7, 2026" : formattedDate;
+        const startDate = new Date(2021, 3, 1);
+        const endDate = new Date(2026, 1, 7);
 
+        // Populate the rest of the 50 poems
+        for(let i = 2; i < 50; i++) {
+            const randomTime = startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime());
+            const d = new Date(randomTime);
+            diaryData.push({
+                title: topics[i-2],
+                date: d.toISOString().split('T')[0],
+                poem: `The ${topics[i-2].toLowerCase()} calls my name,\nIn a voice that has no sound.\nI am no longer the same,\nNow that my peace has been found.`,
+                sentiment: `While writing about ${topics[i-2]}, I was thinking a lot about my own growth. As I navigate through my mid-twenties, I realize that my poetry is the only place where I can be completely honest without any academic pressure or social expectations. It’s like talking to myself in a mirror that only shows the soul.\n\nI’ve learned that like the trees and the waves, I don’t have to apologize for taking up space. This particular piece was written during a time when I was finding my footing as a writer and an individual, leaning into the natural rhythms of my own life rather than forcing a beat that didn't fit.`
+            });
+        }
+
+        // Sort by date (Oldest to Newest)
+        diaryData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        const container = document.getElementById('diary-container');
+
+        diaryData.forEach((item, index) => {
             const card = document.createElement('div');
             card.className = 'poem-card';
             card.innerHTML = `
-                <span class="date-stamp">${finalDate}</span>
-                <h3 class="poem-title">${theme.icon} ${theme.title} No. ${i}</h3>
-                <p style="font-size: 0.9rem; color: #666;">A reflection on ${theme.topic} ${theme.nature}.</p>
-                
-                <div class="expanded-content">
-                    <div class="poem-verse">
-                        The ${theme.topic} speak in a tongue of old,<br>
-                        Stories of silver and stories of gold.<br>
-                        I stand ${theme.nature}, watching the day,<br>
-                        As the restless spirit wanders away.
-                    </div>
+                <div class="poem-header">
+                    <h3>${index + 1}. ${item.title}</h3>
+                    <span class="poem-date">${new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+                <div class="poem-content">
+                    <div class="poem-body">${item.poem}</div>
                     <div class="sentiment-box">
-                        <p><strong>My Sentiment:</strong></p>
-                        <p>${diaryReflections[i % diaryReflections.length]}</p>
-                        <p>Honestly, looking back at this entry, I realize I was just trying to find a bit of peace. Writing has always been my way of talking to myself when the world gets too noisy. It's a dialogue with the trees and the waves.</p>
+                        <strong>My Sentiments:</strong>
+                        ${item.sentiment}
                     </div>
                 </div>
             `;
 
-            card.addEventListener('click', function() {
-                const content = this.querySelector('.expanded-content');
-                const isVisible = content.style.display === 'block';
-                
-                // Close others if you want accordion style (optional)
-                // document.querySelectorAll('.expanded-content').forEach(c => c.style.display = 'none');
-                
-                content.style.display = isVisible ? 'none' : 'block';
-            });
+            card.onclick = function() {
+                const content = this.querySelector('.poem-content');
+                const isOpen = content.style.display === 'block';
+                content.style.display = isOpen ? 'none' : 'block';
+            };
 
-            diaryGrid.appendChild(card);
-        }
-
-        // Add falling leaves for aesthetic
-        function createLeaf() {
-            const leaf = document.createElement('div');
-            leaf.className = 'floating-leaf';
-            leaf.innerHTML = '🍃';
-            leaf.style.left = Math.random() * 100 + 'vw';
-            leaf.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            leaf.style.duration = (Math.random() * 5 + 5) + 's';
-            document.body.appendChild(leaf);
-            setTimeout(() => leaf.remove(), 10000);
-        }
-        setInterval(createLeaf, 2000);
+            container.appendChild(card);
+        });
     </script>
 </body>
-</html>
+    </html>
