@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christine Joy Alutaya | Writer's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Christine Joy Alutaya | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #1a2a6c;
-            --accent-red: #b21f1f;
-            --gold: #fdbb2d;
-            --light-bg: #f4f7f6;
-            --dark-text: #2c3e50;
+            --primary-dark: #0f172a;
+            --primary-blue: #1e40af;
+            --accent-light: #60a5fa;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
             --white: #ffffff;
         }
 
@@ -19,214 +19,242 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
-            color: var(--dark-text);
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .poem-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         /* --- Navigation --- */
         nav {
             position: fixed;
-            top: 0;
             width: 100%;
-            padding: 20px 50px;
+            padding: 1.5rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            letter-spacing: 1px;
         }
 
         .nav-links a {
-            margin-left: 30px;
             text-decoration: none;
-            color: var(--dark-text);
-            font-weight: 600;
-            transition: 0.3s;
+            color: var(--text-main);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--accent-red);
+            color: var(--primary-blue);
         }
 
         /* --- Hero Section --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-red));
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            color: var(--white);
-            position: relative;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: white;
             padding: 0 20px;
         }
 
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
+        .hero h1 {
             font-size: 4rem;
-            margin-bottom: 10px;
-            animation: fadeInDown 1.5s ease;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
         }
 
-        .hero-content p {
+        .hero p {
             font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            animation: fadeInUp 1.5s ease;
+            max-width: 600px;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .btn-main {
+            padding: 1rem 2.5rem;
+            background: var(--accent-light);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         /* --- About Section --- */
-        #about {
-            padding: 100px 10% ;
-            background: var(--white);
+        .about {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: var(--primary-blue);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-        }
-
-        .profile-card {
-            background: var(--primary-blue);
+            justify-content: center;
             color: white;
-            padding: 30px;
+            font-style: italic;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #dcfce7;
+            color: #166534;
             border-radius: 20px;
-            box-shadow: 20px 20px 0px var(--accent-red);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        /* --- Poetry Section (Interactive) --- */
-        #portfolio {
-            padding: 100px 5%;
+        /* --- Poetry Section (The Slider) --- */
+        .poetry-section {
             background: #0f172a;
-            color: var(--white);
-        }
-
-        .section-title {
+            color: white;
+            padding: 100px 10%;
             text-align: center;
-            margin-bottom: 50px;
         }
 
-        .poem-container {
-            position: relative;
+        .poetry-container {
             max-width: 800px;
-            margin: 0 auto;
-            min-height: 450px;
-            background: rgba(255,255,255,0.05);
-            padding: 50px;
-            border-radius: 15px;
-            border-left: 5px solid var(--accent-red);
+            margin: 50px auto;
+            min-height: 400px;
+            position: relative;
         }
 
-        .poem-slide {
+        .poem-card {
             display: none;
-            animation: slideIn 0.8s ease;
+            animation: fadeIn 0.5s ease-in-out;
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent-light);
         }
 
-        .poem-slide.active {
+        .poem-card.active {
             display: block;
         }
 
         .poem-title {
-            font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: var(--gold);
             margin-bottom: 20px;
+            color: var(--accent-light);
         }
 
-        .poem-body {
-            white-space: pre-line;
+        .poem-content {
             font-style: italic;
+            white-space: pre-line;
             font-size: 1.1rem;
-            line-height: 1.8;
         }
 
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .poetry-nav {
             margin-top: 30px;
         }
 
-        .btn {
-            padding: 12px 25px;
-            border: none;
+        .poetry-nav button {
+            background: transparent;
+            border: 1px solid var(--accent-light);
+            color: white;
+            padding: 10px 20px;
             cursor: pointer;
-            font-weight: 600;
-            border-radius: 5px;
+            margin: 0 10px;
             transition: 0.3s;
         }
 
-        .btn-next { background: var(--accent-red); color: white; }
-        .btn-next:hover { background: #d42d2d; transform: scale(1.05); }
+        .poetry-nav button:hover {
+            background: var(--accent-light);
+            color: var(--primary-dark);
+        }
 
-        /* --- Services & Contact --- */
-        .grid-section {
+        /* --- Services Section --- */
+        .services {
+            padding: 100px 10%;
+            background: white;
+        }
+
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            padding: 50px 10%;
+            margin-top: 50px;
         }
 
-        .card {
-            background: white;
+        .service-card {
             padding: 30px;
+            border: 1px solid #e2e8f0;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            border-bottom: 4px solid var(--primary-blue);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-blue);
         }
 
         /* --- Footer --- */
         footer {
-            background: var(--primary-blue);
+            padding: 50px 10%;
+            background: var(--primary-dark);
             color: white;
             text-align: center;
-            padding: 40px;
         }
 
-        /* --- Animations --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 1.1rem;
         }
 
-        /* Responsive */
+        /* --- Responsive Design --- */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            nav { padding: 15px 20px; }
+            .about { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
         }
     </style>
@@ -234,218 +262,180 @@
 <body>
 
     <nav>
-        <div class="logo">C.J.A.</div>
+        <div class="logo">CJA.PORTFOLIO</div>
         <div class="nav-links">
-            <a href="#home">Home</a>
             <a href="#about">About</a>
-            <a href="#portfolio">Poetry</a>
+            <a href="#poetry">Poetry</a>
             <a href="#services">Services</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <p>Educator • Poet • Wordsmith</p>
-            <h1>Christine Joy Alutaya</h1>
-            <p style="font-size: 0.9rem; margin-top: 20px; opacity: 0.8;">Crafting verses since 2013</p>
-        </div>
+    <section class="hero">
+        <h1>Christine Joy Alutaya</h1>
+        <p>Educator | Poet | Summa Cum Laude</p>
+        <a href="#poetry" class="btn-main">Explore My Verse</a>
     </section>
 
-    <section id="about">
+    <section id="about" class="about">
+        <div class="about-image">
+            <div style="text-align:center">
+                <p>"Words are the mirrors of the soul."</p>
+                <small>— C.J.A</small>
+            </div>
+        </div>
         <div class="about-text">
-            <h2>The Heart Behind the Pen</h2>
-            <p>I am a 24-year-old <strong>Bachelor of Secondary Education Major in English</strong> graduate. My journey with language isn't just academic—it’s deeply personal. Since my first year of high school, poetry has been my primary lens for viewing the world.</p>
+            <span class="badge">Academic Excellence</span>
+            <h2>A Journey of Letters & Learning</h2>
+            <p>I am a 24-year-old educator with a **Bachelor of Secondary Education Major in English**, graduating as **Summa Cum Laude**. My relationship with the written word began in my first year of high school, where I discovered that poetry isn't just a hobby—it's a way of breathing.</p>
             <br>
-            <p>I believe in the power of the written word to bridge the gap between human experience and silent emotion. While others find solace in the outdoors, I find my sanctuary in the rhythm of a well-placed stanza and the structured chaos of a blank page.</p>
-        </div>
-        <div class="profile-card">
-            <h3>Quick Profile</h3>
-            <hr style="margin: 15px 0; opacity: 0.3;">
-            <p><strong>Name:</strong> Christine Joy Alutaya</p>
-            <p><strong>Age:</strong> 24 Years Old</p>
-            <p><strong>Expertise:</strong> English Pedagogy & Creative Writing</p>
-            <p><strong>Poetic Style:</strong> Versatile, Emotional, Structural</p>
+            <p>While many seek adventure in the mountains, I find my peaks in the rhythm of a well-placed stanza and my depths in the nuances of English literature.</p>
         </div>
     </section>
 
-    <section id="portfolio">
-        <div class="section-title">
-            <h2>The Decadent Collection</h2>
-            <p>10 Poems. 10 Worlds.</p>
+    <section id="poetry" class="poetry-section">
+        <h2>The Poetry Portfolio</h2>
+        <p>Ten distinct voices from a decade of writing.</p>
+
+        <div class="poetry-container">
+            <div class="poem-card active">
+                <h3 class="poem-title">I. The Chalk’s Echo</h3>
+                <p class="poem-content">White dust on tired fingers,
+                A symphony of scratching on the slate.
+                To teach is to be a sculptor,
+                Of a future we cannot yet dictate.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">II. Midnight Ink</h3>
+                <p class="poem-content">The moon is a comma in a sky of prose,
+                Where the restless heart finally knows,
+                That silence is a language rarely spoken,
+                By those whose dreams remain unbroken.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">III. Syntax of Soul</h3>
+                <p class="poem-content">Subject, verb, and the object of my affection,
+                Lost in the grammar of a quiet connection.
+                No punctuation can halt this flow,
+                Where logic ends and feelings grow.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">IV. Graduation Gown</h3>
+                <p class="poem-content">Heavy silk and gold-trimmed pride,
+                Years of struggle tucked inside.
+                The 'Summa' title is a heavy crown,
+                Worn while the sun of youth goes down.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">V. First Year High</h3>
+                <p class="poem-content">A notebook hidden in a crowded bag,
+                Before the spirit learned to sag.
+                The very first rhyme, a clumsy beat,
+                Made the world feel finally complete.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">VI. Urban Rustle</h3>
+                <p class="poem-content">Concrete veins and electric blood,
+                The city drowning in a human flood.
+                I find my forest in the library aisles,
+                And travel across a thousand miles.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">VII. Digital Dust</h3>
+                <p class="poem-content">Cursors blink like a dying star,
+                In a world where we forgot who we are.
+                Pixels replace the scent of old paper,
+                As memories turn to a flickering vapor.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">VIII. The Editor's Red</h3>
+                <p class="poem-content">Strike through the ego, bleed on the page,
+                Wisdom is found in the pruning of age.
+                Less is more when the truth is bare,
+                A singular word is a silent prayer.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">IX. Seasons of Blue</h3>
+                <p class="poem-content">Not the ocean, but the shade of a bruise,
+                The colors that we often choose,
+                When the morning is cold and the coffee is black,
+                And there is no road leading us back.</p>
+            </div>
+            <div class="poem-card">
+                <h3 class="poem-title">X. The Final Period</h3>
+                <p class="poem-content">The pen rests now, its duty done,
+                Under the light of a setting sun.
+                The portfolio ends, but the story is wide,
+                With millions of words still trapped inside.</p>
+            </div>
         </div>
 
-        <div class="poem-container">
-            <div class="poem-slide active">
-                <h3 class="poem-title">01. Ink & Ether</h3>
-                <p class="poem-body">The nib bleeds black upon the stark white field,
-                A surrender to the thoughts I cannot hold.
-                Between the margins, secret truths are yielded,
-                In characters of silver and of gold.
-                No spoken breath could carry half the weight,
-                Of what the silent parchment can translate.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">02. Binary Heartbeat</h3>
-                <p class="poem-body">One and zero, pulse and pause,
-                Logic trapped in glass-walled laws.
-                But even in the cold machine,
-                Are ghosts of things that might have been.
-                A flicker in the glowing blue,
-                A digital search for something true.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">03. The Educator’s Vow</h3>
-                <p class="poem-body">To speak of syntax is to speak of life,
-                To carve a path through ignorance and strife.
-                I plant the seeds of grammar in the mind,
-                So voices lost may finally be defined.
-                The classroom is a garden, vast and deep,
-                Where promises of future giants sleep.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">04. Midnight in Manila</h3>
-                <p class="poem-body">The city hums a frantic, neon hymn,
-                While shadows dance upon the river’s rim.
-                Traffic lights are rubies in the rain,
-                Pulsing with a rhythmic, urban pain.
-                We are but sparks within the concrete hive,
-                Just trying, desperately, to feel alive.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">05. Vintage Coffee</h3>
-                <p class="poem-body">Bitter bean and steam that curls like smoke,
-                A conversation shared before we broke.
-                The porcelain is chipped around the edge,
-                Like every hollow, half-forgotten pledge.
-                Drink the dregs and let the morning come,
-                Until the aching in the chest is numb.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">06. The Unsent Letter</h3>
-                <p class="poem-body">I folded up the sun and put it in an envelope,
-                Tucked beside a fraying strand of desperate hope.
-                I never licked the seal or wrote your name,
-                Lest the paper burst into a sudden flame.
-                It sits within the drawer of things unsaid,
-                A quiet ghost I haven't quite put to bed.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">07. Syntax of a Soul</h3>
-                <p class="poem-body">Am I a noun? A static, solid thing?
-                Or just a verb, a frantic, fleeting wing?
-                Adjectives fail to capture who I feel,
-                The adjectives are masks; the verbs are real.
-                I am the action, not the hollow state,
-                A living sentence moving toward its fate.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">08. Loom of Time</h3>
-                <p class="poem-body">Warp and weft, the seconds weave the cloth,
-                Drawn toward the flame like any foolish moth.
-                The pattern emerges in the gray and white,
-                Stitched by the needles of the day and night.
-                Do not fear the fraying at the end,
-                For every broken thread has time to mend.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">09. Architectural Silence</h3>
-                <p class="poem-body">Columns of marble and arches of bone,
-                Building a temple for being alone.
-                No windows to watch as the seasons go by,
-                No skylights to offer a piece of the sky.
-                Only the echoes of steps on the floor,
-                And the heavy, mahogany weight of the door.</p>
-            </div>
-
-            <div class="poem-slide">
-                <h3 class="poem-title">10. The Final Stanza</h3>
-                <p class="poem-body">The curtain falls, the ink begins to dry,
-                A thousand poems beneath a paper sky.
-                But though the book is closed and put away,
-                The echoes of the verses choose to stay.
-                For every ending is a door flung wide,
-                To all the music waiting deep inside.</p>
-            </div>
-
-            <div class="controls">
-                <button class="btn" onclick="prevPoem()" style="background: #334155; color: white;">Previous</button>
-                <button class="btn btn-next" onclick="nextPoem()">Next Poem →</button>
-            </div>
+        <div class="poetry-nav">
+            <button onclick="changePoem(-1)">Previous</button>
+            <span id="poem-index">1 / 10</span>
+            <button onclick="changePoem(1)">Next Poem</button>
         </div>
     </section>
 
-    <section id="services">
-        <div class="section-title">
-            <h2 style="color: var(--primary-blue);">Expertise & Services</h2>
+    <section id="services" class="services">
+        <h2 style="text-align:center">Academic & Creative Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Content Writing</h3>
+                <p>High-quality articles, essays, and creative pieces tailored to your voice.</p>
+            </div>
+            <div class="service-card">
+                <h3>Academic Editing</h3>
+                <p>Ensuring your papers are grammatically perfect and structurally sound.</p>
+            </div>
+            <div class="service-card">
+                <h3>Curriculum Design</h3>
+                <p>Specialized educational materials for English language learners.</p>
+            </div>
         </div>
-        <div class="grid-section">
-            <div class="card">
-                <h3>Poetry Commissions</h3>
-                <p>Bespoke verses for special occasions, brands, or personal keepsakes.</p>
-            </div>
-            <div class="card">
-                <h3>Editing & Proofing</h3>
-                <p>Refining manuscripts with the precision of an English Education specialist.</p>
-            </div>
-            <div class="card">
-                <h3>Content Strategy</h3>
-                <p>Creative storytelling that engages readers and builds authentic identity.</p>
-            </div>
+
+        <div style="margin-top: 50px; text-align: center; padding: 40px; background: #f1f5f9; border-radius: 20px;">
+            <h3>"Christine's attention to detail is unmatched. Her Summa Cum Laude background truly shows in her work."</h3>
+            <p style="margin-top:10px; font-weight: 600;">— Academic Peer Review</p>
         </div>
     </section>
 
-    <section id="contact" style="background: #f1f5f9; padding: 80px 10%; text-align: center;">
+    <footer id="contact">
         <h2>Let's Collaborate</h2>
-        <p>Ready to bring your story to life? I'm currently accepting new projects.</p>
+        <p>Ready to bring your projects to life with precision and creativity?</p>
+        <div class="contact-info">
+            Email: <a href="mailto:christinejoyalutaya7@gmail.com" style="color: var(--accent-light);">christinejoyalutaya7@gmail.com</a>
+        </div>
         <br>
-        <p><strong>Email:</strong> christine.alutaya.writer@email.com</p>
-        <p><strong>LinkedIn:</strong> linkedin.com/in/christinejoyalutaya</p>
-        <br>
-        <button class="btn btn-next" onclick="alert('Thank you for your interest! Please email me at the address above.')">Download CV</button>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Christine Joy Alutaya. All Rights Reserved.</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Designed with passion for the literary arts.</p>
+        <a href="mailto:christinejoyalutaya7@gmail.com" class="btn-main">Contact Me Now</a>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">© 2024 Christine Joy Alutaya. All rights reserved.</p>
     </footer>
 
     <script>
         let currentPoem = 0;
-        const poems = document.querySelectorAll('.poem-slide');
+        const poems = document.querySelectorAll('.poem-card');
+        const indexDisplay = document.getElementById('poem-index');
 
-        function showPoem(index) {
-            poems.forEach(p => p.classList.remove('active'));
-            poems[index].classList.add('active');
+        function changePoem(direction) {
+            poems[currentPoem].classList.remove('active');
+            currentPoem += direction;
+
+            if (currentPoem >= poems.length) currentPoem = 0;
+            if (currentPoem < 0) currentPoem = poems.length - 1;
+
+            poems[currentPoem].classList.add('active');
+            indexDisplay.innerText = `${currentPoem + 1} / 10`;
         }
 
-        function nextPoem() {
-            currentPoem = (currentPoem + 1) % poems.length;
-            showPoem(currentPoem);
-        }
-
-        function prevPoem() {
-            currentPoem = (currentPoem - 1 + poems.length) % poems.length;
-            showPoem(currentPoem);
-        }
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // Add some interactive hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.backgroundColor = '#f8fafc';
+            });
+            card.addEventListener('mouseout', () => {
+                card.style.backgroundColor = 'transparent';
             });
         });
     </script>
 </body>
-    </html>
+</html>
