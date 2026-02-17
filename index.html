@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- BASIC META SETTINGS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO META TAGS -->
+    <meta name="description" content="Professional portfolio website of Christine Joy Alutaya — dedicated professional specializing in communication, leadership, education, and behavioral therapy." />
+    <meta name="keywords" content="Christine Joy Alutaya, Portfolio, Behavioral Therapy, Teacher, Supervisor, Education, Professional" />
+    <meta name="author" content="Christine Joy Alutaya" />
+
+    <title>Christine Joy Alutaya | Professional Portfolio</title>
+
+    <!-- ======= CSS STYLES ======= -->
+    <style>
+        /* GLOBAL RESETS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            background: #f8f9fa;
+            color: #222;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* HEADER + NAVIGATION */
+        header {
+            background: #1d3557;
+            padding: 20px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a:hover {
+            color: #a8dadc;
+        }
+
+        /* SECTION WRAPPER */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h1, h2 {
+            margin-bottom: 15px;
+            color: #1d3557;
+        }
+
+        /* ABOUT SECTION */
+        .about-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        /* INFO GRID */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        /* EXPERIENCE / EDUCATION / SKILLS CARDS */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            color: #457b9d;
+            margin-bottom: 10px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        /* CONTACT FORM */
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            max-width: 700px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        form button {
+            padding: 12px 20px;
+            border: none;
+            background: #1d3557;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #457b9d;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 20px;
+            background: #1d3557;
+            color: white;
+        }
+
+        /* RESPONSIVE ADJUSTMENTS */
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none; /* For simplicity — can be expanded to mobile menu */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======= NAVIGATION ======= -->
+    <header>
+        <nav>
+            <h2>Christine Joy Alutaya</h2>
+
+            <!-- Navigation links (smooth scroll enabled) -->
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- ======= ABOUT SECTION ======= -->
+    <section id="about">
+        <h1>About Me</h1>
+
+        <div class="about-box">
+            <p>
+                A dedicated and adaptable professional with strong experience in leadership, communication,
+                education, and behavioral therapy. Proven ability to foster positive relationships, support students,
+                manage operations, and contribute to organizational success through professionalism 
+                and efficiency.
+            </p>
+
+            <div class="info-grid">
+                <p><strong>Location:</strong> Caloocan</p>
+                <p><strong>Phone:</strong> +63 946 691 4473</p>
+                <p><strong>Email:</strong> christinejoyalutaya7@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= EXPERIENCE SECTION ======= -->
+    <section id="experience">
+        <h2>Professional Experience</h2>
+
+        <!-- Branch Supervisor -->
+        <div class="card">
+            <h3>Branch Supervisor — The Bright Future Behavioral Therapy Inc.</h3>
+            <p><em>San Jose Del Monte, Bulacan — May 2025 to Jan 2026</em></p>
+
+            <ul>
+                <li>Managed branch finances and documentation</li>
+                <li>Oversaw daily sessions and procured necessary supplies</li>
+                <li>Acted as the primary liaison between the branch and main office</li>
+            </ul>
+        </div>
+
+        <!-- Teacher -->
+        <div class="card">
+            <h3>Teacher — The Bright Future Behavioral Therapy Inc.</h3>
+            <p><em>San Jose Del Monte, Bulacan — Apr 2024 to Jan 2026</em></p>
+
+            <ul>
+                <li>Conducted individualized sessions tailored to students' needs</li>
+                <li>Communicated session progress and behavior updates to parents</li>
+                <li>Provided at-home strategies for continued learning and behavioral support</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <!-- ======= EDUCATION SECTION ======= -->
+    <section id="education">
+        <h2>Education</h2>
+
+        <div class="card">
+            <h3>Bachelor of Secondary Education — Major in English</h3>
+            <p><em>St. Vincent de Ferrer College of Camarin Inc., Caloocan</em></p>
+            <p><strong>Jun 2019 – Jun 2023</strong></p>
+            <p><strong>Honors:</strong> Summa Cum Laude</p>
+        </div>
+    </section>
+
+    <!-- ======= SKILLS SECTION ======= -->
+    <section id="skills">
+        <h2>Skills</h2>
+
+        <div class="card">
+            <h3>Technical Skills</h3>
+            <ul>
+                <li>Google Workspace</li>
+                <li>Canva</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Soft Skills</h3>
+            <ul>
+                <li>Professionalism</li>
+                <li>Adaptability</li>
+                <li>Conflict Resolution</li>
+                <li>Collaboration</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ======= CERTIFICATIONS ======= -->
+    <section id="certifications">
+        <h2>Certifications</h2>
+
+        <div class="card">
+            <ul>
+                <li>Licensed Professional Teacher</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ======= CONTACT SECTION ======= -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <!-- Dummy contact form (can be integrated with backend) -->
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="email" id="email" placeholder="Your Email" required />
+            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+            <p id="formStatus" style="margin-top: 10px; color: #1d3557;"></p>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 Christine Joy Alutaya. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ======= JAVASCRIPT FOR INTERACTION ======= -->
+    <script>
+        /* Smooth scroll is handled by CSS scroll-behavior */
+
+        // Simple interactive contact form (front-end only)
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            // Show simple confirmation message
+            document.getElementById("formStatus").textContent =
+                "Thank you! Your message has been submitted.";
+
+            // Reset fields
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
