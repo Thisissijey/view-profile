@@ -3,559 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christine Joy Alutaya | Portfolio</title>
+    <title>Christine Joy Alutaya | Educator & Leader</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --bg-accent: #1e293b;
-            --gold: #d4af37;
-            --cream: #f8fafc;
-            --text-dim: #94a3b8;
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg: #fffcf5;
+            --primary: #4361ee;
+            --accent-1: #ff8066;
+            --accent-2: #4cc9f0;
+            --text-dark: #2b2d42;
+            --text-light: #64748b;
+            --glass: rgba(255, 255, 255, 0.7);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            outline: none;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            font-family: 'Quicksand', sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--cream);
-            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-dark);
             overflow-x: hidden;
-            line-height: 1.7;
+            scroll-behavior: smooth;
         }
 
-        /* --- Artistic Background Elements --- */
-        .bg-blob {
-            position: fixed;
+        /* Artistic Background Elements */
+        .blob {
+            position: absolute;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
+            background: linear-gradient(135deg, #e0e7ff 0%, #ffedd5 100%);
+            filter: blur(80px);
             border-radius: 50%;
             z-index: -1;
-            filter: blur(50px);
+            animation: float 20s infinite alternate;
         }
 
-        .blob-1 { top: -100px; right: -100px; }
-        .blob-2 { bottom: -100px; left: -100px; }
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 150px); }
+        }
 
-        /* --- Navigation --- */
+        /* Navigation */
         nav {
-            position: fixed;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            position: sticky;
             top: 0;
-            width: 100%;
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(15,23,42,0.9), transparent);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .nav-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-links a {
+        nav a {
             text-decoration: none;
-            color: var(--cream);
-            font-size: 0.8rem;
-            letter-spacing: 3px;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            transition: var(--transition);
-            position: relative;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: var(--transition);
-        }
+        nav a:hover { color: var(--primary); }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 100vh;
+        /* Hero Section */
+        header {
+            height: 85vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 0 10%;
         }
 
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(30px);
+        .name-container {
+            position: relative;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-subtitle {
-            font-size: 1rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 40px;
-            opacity: 0;
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            line-height: 1;
+            color: var(--text-dark);
+            z-index: 2;
         }
 
-        .scroll-indicator {
+        .underline {
+            height: 12px;
+            width: 110%;
+            background: var(--accent-1);
             position: absolute;
-            bottom: 40px;
-            width: 2px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
-            animation: scroll-line 2s infinite;
+            bottom: 10px;
+            left: -5%;
+            z-index: -1;
+            opacity: 0.3;
+            border-radius: 20px;
         }
 
-        @keyframes scroll-line {
-            0% { transform: scaleY(0); transform-origin: top; }
-            50% { transform: scaleY(1); transform-origin: top; }
-            51% { transform: scaleY(1); transform-origin: bottom; }
-            100% { transform: scaleY(0); transform-origin: bottom; }
+        .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 10px;
         }
 
-        /* --- Sections Shared Layout --- */
-        section {
-            padding: 150px 10%;
-            min-height: 100vh;
-        }
+        /* Section Layouts */
+        section { padding: 80px 10%; }
 
         .section-header {
-            margin-bottom: 80px;
-        }
-
-        .section-label {
-            color: var(--gold);
-            font-size: 0.7rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-        }
-
-        /* --- Profile / About --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            background: var(--bg-accent);
-            border: 1px solid rgba(212,175,55,0.2);
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.1);
-            transition: var(--transition);
-        }
-
-        .about-image:hover img {
-            filter: grayscale(0%);
-            transform: scale(1.05);
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            margin-bottom: 30px;
-        }
-
-        /* --- Experience Grid --- */
-        .exp-container {
-            display: grid;
-            gap: 40px;
-        }
-
-        .exp-card {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 50px;
-            border-radius: 2px;
-            border-left: 1px solid var(--gold);
-            transition: var(--transition);
-        }
-
-        .exp-card:hover {
-            background: rgba(212, 175, 55, 0.03);
-            transform: translateX(10px);
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 25px;
-        }
-
-        .exp-role {
-            font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .exp-company {
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .exp-list {
-            list-style: none;
-            color: var(--text-dim);
-        }
-
-        .exp-list li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .exp-list li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-        }
-
-        /* --- Education & Skills --- */
-        .dual-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 60px;
-        }
-
-        .skill-tag {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 1px solid rgba(212,175,55,0.3);
-            margin: 0 10px 15px 0;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
-
-        .skill-tag:hover {
-            background: var(--gold);
-            color: var(--bg-dark);
-        }
-
-        /* --- Artistic Quote Section --- */
-        .quote-sec {
             text-align: center;
-            padding: 100px 20%;
-        }
-
-        .quote-sec blockquote {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-style: italic;
-            opacity: 0.6;
-        }
-
-        /* --- Professional Footer --- */
-        footer {
-            padding: 100px 10% 50px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-        }
-
-        .footer-email {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 5vw, 3rem);
-            color: var(--gold);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 50px;
-            transition: var(--transition);
-        }
-
-        .footer-email:hover {
-            opacity: 0.7;
-            letter-spacing: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
             margin-bottom: 60px;
         }
 
-        .social-links a {
-            color: var(--text-dim);
-            font-size: 1.2rem;
-            transition: var(--transition);
+        .section-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
         }
 
-        .social-links a:hover {
-            color: var(--gold);
+        /* Cards and Elements */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
-        .copyright-area {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 40px;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: var(--text-dim);
-            text-transform: uppercase;
+        .art-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            border: 2px solid #f1f5f9;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            background: white;
         }
 
-        /* --- Decorative SVG Illustrations --- */
-        .art-decor {
+        .art-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 20px 20px 60px #d1d9e6, -20px -20px 60px #ffffff;
+            border-color: var(--primary);
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            background: var(--bg);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Experience Timeline Style */
+        .work-box {
+            border-left: 3px dashed var(--accent-1);
+            padding-left: 30px;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .work-item {
+            margin-bottom: 40px;
+        }
+
+        .work-item::before {
+            content: '';
             position: absolute;
-            opacity: 0.1;
-            z-index: -1;
-            pointer-events: none;
+            left: -11px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
         }
 
-        /* --- Responsive --- */
-        @media (max-width: 968px) {
-            .about-grid, .dual-grid { grid-template-columns: 1fr; }
-            nav { padding: 20px; }
-            .nav-links { display: none; }
-            section { padding: 100px 5%; }
+        .date-tag {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-1);
+            margin-bottom: 5px;
+            display: block;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); }
+        /* Skills/Doodles Area */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
 
+        .skill-chip {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid var(--text-dark);
+            border-radius: 50px;
+            font-weight: 700;
+            transition: 0.3s;
+            cursor: default;
+        }
+
+        .skill-chip:hover {
+            background: var(--text-dark);
+            color: white;
+            transform: rotate(-3deg);
+        }
+
+        /* Education Sketch */
+        .edu-section {
+            background: var(--primary);
+            color: white;
+            border-radius: 40px;
+            padding: 60px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 10% 40px;
+            text-align: center;
+            background: #fafafa;
+        }
+
+        .email-link {
+            font-size: clamp(1rem, 5vw, 2.5rem);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-family: 'DM Serif Display', serif;
+            transition: 0.3s;
+            word-break: break-all;
+        }
+
+        .email-link:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Small Illustrations/Shapes */
+        .shape-circle {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--accent-2);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .shape-square {
+            width: 30px;
+            height: 30px;
+            background: var(--accent-1);
+            display: inline-block;
+            transform: rotate(45deg);
+        }
+
+        @media (max-width: 768px) {
+            nav { gap: 1rem; }
+            section { padding: 60px 5%; }
+            .edu-section { padding: 30px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="bg-blob blob-1"></div>
-    <div class="bg-blob blob-2"></div>
+    <div class="blob" style="top: -100px; left: -100px;"></div>
+    <div class="blob" style="bottom: -100px; right: -100px; background: linear-gradient(135deg, #fae8ff 0%, #e0f2fe 100%);"></div>
 
     <nav>
-        <div class="nav-brand">CJA</div>
-        <div class="nav-links">
-            <a href="#about">Philosophy</a>
-            <a href="#experience">Path</a>
-            <a href="#education">Roots</a>
-            <a href="#contact">Connect</a>
-        </div>
+        <a href="#about">Story</a>
+        <a href="#work">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Connect</a>
     </nav>
 
-    <header class="hero">
-        <span class="hero-subtitle">Educator & Educational Strategist</span>
-        <h1 class="hero-title">Christine Joy<br>Alutaya</h1>
-        <div class="scroll-indicator"></div>
+    <header>
+        <div class="name-container">
+            <h1>Christine Joy Alutaya</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="subtitle">Licensed Professional Teacher</div>
+        <div style="margin-top: 20px;">
+            <span class="shape-circle"></span>
+            <span class="shape-square" style="margin: 0 20px;"></span>
+            <span class="shape-circle" style="background: var(--accent-2);"></span>
+        </div>
     </header>
 
     <section id="about">
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" alt="Workspace">
+        <div class="grid">
+            <div class="art-card" style="grid-column: span 2;">
+                <h3 style="font-family: 'DM Serif Display'; font-size: 2rem; margin-bottom: 1rem;">The Vision</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    A dedicated and adaptable professional with a track record of fostering positive relationships, 
+                    providing support, and efficiently managing tasks. I seek to leverage my background in 
+                    communication and general service to contribute to the success of dynamic organizations.
+                </p>
             </div>
-            <div class="about-text">
-                <span class="section-label">A Professional Narrative</span>
-                <h2 class="section-title">Bridging Theory and Practice</h2>
-                <p>
-                    I approach education not just as a transfer of knowledge, but as a systematic orchestration of growth. 
-                    With a background rooted in secondary education and behavioral therapy management, I specialize 
-                    in creating environments where students—and the organizations that support them—can thrive.
-                </p>
-                <p>
-                    My experience in branch supervision has honed my ability to balance documentation, finance, 
-                    and operational logistics without losing sight of the human element in educational services.
-                </p>
+            <div class="art-card" style="background: var(--accent-2); border: none; color: white;">
+                <i class="fas fa-quote-left" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                <p style="font-weight: 700; font-size: 1.2rem;">"Education is the most powerful weapon which you can use to change the world."</p>
             </div>
         </div>
     </section>
 
-    <section id="experience">
+    <section id="work">
         <div class="section-header">
-            <span class="section-label">Professional Experience</span>
-            <h2 class="section-title">The Career Journey</h2>
+            <h2>Professional Journey</h2>
         </div>
-
-        <div class="exp-container">
-            <div class="exp-card">
-                <div class="exp-header">
-                    <span class="exp-role">Branch Supervisor</span>
-                    <span class="text-dim">May 2025 — January 2026</span>
-                </div>
-                <span class="exp-company">The Bright Future Behavioral Therapy Inc.</span>
-                <ul class="exp-list">
-                    <li>Led branch-wide financial management and rigorous operational documentation.</li>
-                    <li>Orchestrated program procurement and optimized supply chains for educational sessions.</li>
-                    <li>Served as the strategic liaison between regional branches and the corporate headquarters.</li>
-                </ul>
+        
+        <div class="work-box">
+            <div class="work-item">
+                <span class="date-tag">May 2025 — January 2026</span>
+                <h3 style="font-size: 1.5rem;">Branch Supervisor</h3>
+                <p style="color: var(--primary); font-weight: 700; margin-bottom: 10px;">The Bright Future Behavioral Therapy Inc. | San Jose Del Monte</p>
+                <p>Leading operational efficiency through finance management, documentation, and coordination between branch and main offices. Ensuring the procurement of vital program supplies.</p>
             </div>
 
-            <div class="exp-card">
-                <div class="exp-header">
-                    <span class="exp-role">Teacher & Facilitator</span>
-                    <span class="text-dim">April 2024 — January 2026</span>
-                </div>
-                <span class="exp-company">The Bright Future Behavioral Therapy Inc.</span>
-                <ul class="exp-list">
-                    <li>Designed and executed bespoke one-on-one sessions focused on skill retention.</li>
-                    <li>Maintained consistent collaborative dialogue with families to ensure holistic support.</li>
-                    <li>Developed customized at-home behavioral strategies to extend the learning environment.</li>
-                </ul>
+            <div class="work-item">
+                <span class="date-tag">April 2024 — January 2026</span>
+                <h3 style="font-size: 1.5rem;">Teacher</h3>
+                <p style="color: var(--primary); font-weight: 700; margin-bottom: 10px;">The Bright Future Behavioral Therapy Inc.</p>
+                <p>Specializing in one-on-one sessions, progress monitoring, and collaborative parental strategies to enhance student behavior support and skill retention.</p>
             </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background: #fff;">
+        <div class="section-header">
+            <h2>Core Expertise</h2>
+        </div>
+        <div class="skills-container">
+            <div class="skill-chip">Effective Communication</div>
+            <div class="skill-chip">Academic Support</div>
+            <div class="skill-chip">Operational Management</div>
+            <div class="skill-chip">Behavioral Therapy Support</div>
+            <div class="skill-chip">Relationship Building</div>
+            <div class="skill-chip">English Language Instruction</div>
         </div>
     </section>
 
     <section id="education">
-        <div class="dual-grid">
-            <div class="edu-path">
-                <div class="section-header">
-                    <span class="section-label">Academic Foundations</span>
-                    <h2 class="section-title">Education</h2>
-                </div>
-                <div class="exp-card" style="border: none; padding-left: 0;">
-                    <h3 style="font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 10px;">Bachelor of Secondary Education</h3>
-                    <p style="color: var(--gold); margin-bottom: 5px;">Major in English</p>
-                    <p class="text-dim">St. Vincent de Ferrer College of Camarin Inc.</p>
-                </div>
-            </div>
-
-            <div class="skills-area">
-                <div class="section-header">
-                    <span class="section-label">Expertise</span>
-                    <h2 class="section-title">Core Skills</h2>
-                </div>
-                <div class="skills-wrap">
-                    <span class="skill-tag">Effective Communication</span>
-                    <span class="skill-tag">Academic Support</span>
-                    <span class="skill-tag">Operational Management</span>
-                    <span class="skill-tag">Behavioral Support</span>
-                    <span class="skill-tag">Financial Coordination</span>
-                    <span class="skill-tag">Strategic Liaison</span>
-                </div>
+        <div class="edu-section">
+            <i class="fas fa-graduation-cap" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h2 style="font-family: 'DM Serif Display'; font-size: 2.5rem;">St. Vincent de Ferrer College</h2>
+            <p style="font-size: 1.3rem; opacity: 0.9;">Bachelor of Secondary Education | Major in English</p>
+            <div style="margin-top: 20px; font-weight: 700; letter-spacing: 1px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px;">
+                <i class="fas fa-award"></i> Outstanding Performance in Internship
             </div>
         </div>
     </section>
 
-    <div class="quote-sec">
-        <blockquote>
-            "To teach is to learn twice, to manage is to empower many."
-        </blockquote>
-    </div>
-
     <footer id="contact">
-        <span class="section-label">Let's Connect</span>
-        <a href="mailto:christinejoyalutaya7@gmail.com" class="footer-email">christinejoyalutaya7@gmail.com</a>
+        <div class="section-header">
+            <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 700; color: var(--accent-1);">Let's Start a Conversation</p>
+        </div>
+        <a href="mailto:christinejoyalutaya7@gmail.com" class="email-link">christinejoyalutaya7@gmail.com</a>
         
-        <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-behance"></i></a>
-            <a href="#"><i class="far fa-file-pdf"></i></a>
+        <div style="margin-top: 40px; font-size: 1.2rem;">
+            <i class="fas fa-phone-alt" style="margin-right: 10px; color: var(--primary);"></i> 639466914473
         </div>
 
-        <div class="copyright-area">
-            &copy; 2026 Christine Joy Alutaya | All Rights Reserved.
-            <br>
-            <span style="font-size: 0.6rem; opacity: 0.4; margin-top: 10px; display: block;">Built with Precision and Purpose.</span>
+        <div class="footer-bottom">
+            <p>Designed with creativity for the future of education.</p>
+            <p>&copy; 2026 Christine Joy Alutaya. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // GSAP Animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero Entrance
-        gsap.to(".hero-title", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" });
-        gsap.to(".hero-subtitle", { opacity: 1, duration: 2, delay: 0.5 });
-
-        // Section Headers Reveal
-        document.querySelectorAll(".section-title").forEach(title => {
-            gsap.from(title, {
-                scrollTrigger: {
-                    trigger: title,
-                    start: "top 80%",
-                },
-                opacity: 0,
-                y: 20,
-                duration: 1
+        // Simple reveal animation on scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
             });
-        });
+        }, observerOptions);
 
-        // Experience Cards Reveal
-        gsap.from(".exp-card", {
-            scrollTrigger: {
-                trigger: ".exp-container",
-                start: "top 70%",
-            },
-            opacity: 0,
-            x: -30,
-            stagger: 0.3,
-            duration: 1
-        });
-
-        // Skill Tags Stagger
-        gsap.from(".skill-tag", {
-            scrollTrigger: {
-                trigger: ".skills-wrap",
-                start: "top 90%",
-            },
-            opacity: 0,
-            scale: 0.8,
-            stagger: 0.1,
-            duration: 0.5
-        });
-
-        // Parallax Effect for blobs
-        window.addEventListener("mousemove", (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            gsap.to(".blob-1", { x: x * 50, y: y * 50 });
-            gsap.to(".blob-2", { x: -x * 50, y: -y * 50 });
+        document.querySelectorAll('.art-card, .work-item').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 0.8s ease-out";
+            observer.observe(el);
         });
     </script>
 </body>
