@@ -5,476 +5,558 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christine Joy Alutaya | Portfolio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #fcfcfd;
-            --primary-accent: #4f46e5;
-            --secondary-accent: #6366f1;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --glass: rgba(255, 255, 255, 0.7);
-            --border: rgba(226, 232, 240, 0.8);
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --bg-dark: #0f172a;
+            --bg-accent: #1e293b;
+            --gold: #d4af37;
+            --cream: #f8fafc;
+            --text-dim: #94a3b8;
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            outline: none;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-dark);
+            background-color: var(--bg-dark);
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             line-height: 1.7;
         }
 
         /* --- Artistic Background Elements --- */
-        .blob {
+        .bg-blob {
             position: fixed;
-            z-index: -1;
-            filter: blur(80px);
-            opacity: 0.4;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
             border-radius: 50%;
-            animation: move 20s infinite alternate;
+            z-index: -1;
+            filter: blur(50px);
         }
 
-        .blob-1 { width: 400px; height: 400px; background: #dbeafe; top: -100px; right: -100px; }
-        .blob-2 { width: 350px; height: 350px; background: #ede9fe; bottom: -50px; left: -50px; animation-delay: -5s; }
-        .blob-3 { width: 300px; height: 300px; background: #fae8ff; top: 40%; left: 20%; animation-delay: -10s; }
-
-        @keyframes move {
-            from { transform: translate(0, 0) scale(1); }
-            to { transform: translate(50px, 100px) scale(1.1); }
-        }
+        .blob-1 { top: -100px; right: -100px; }
+        .blob-2 { bottom: -100px; left: -100px; }
 
         /* --- Navigation --- */
         nav {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 600px;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--border);
-            padding: 12px 30px;
-            border-radius: 100px;
+            top: 0;
+            width: 100%;
+            padding: 30px 50px;
             display: flex;
-            justify-content: center;
-            gap: 25px;
+            justify-content: space-between;
+            align-items: center;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            background: linear-gradient(to bottom, rgba(15,23,42,0.9), transparent);
         }
 
-        nav a {
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            color: var(--cream);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: var(--transition);
             position: relative;
         }
 
-        nav a:hover { color: var(--primary-accent); }
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--gradient);
-            transition: 0.3s;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
         }
-        nav a:hover::after { width: 100%; }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
         /* --- Hero Section --- */
-        header {
-            min-height: 100vh;
+        .hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            position: relative;
         }
 
-        .hero-art {
-            position: absolute;
-            font-size: 15rem;
-            opacity: 0.03;
+        .hero-title {
             font-family: 'Playfair Display', serif;
-            z-index: -1;
-            font-style: italic;
-        }
-
-        .name-container h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
             line-height: 1.1;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #1e293b, #4f46e5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            letter-spacing: 4px;
+        .hero-subtitle {
+            font-size: 1rem;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .intro-text {
-            max-width: 600px;
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            color: var(--gold);
             margin-bottom: 40px;
+            opacity: 0;
         }
 
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
-            animation: bounce 2s infinite;
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scroll-line 2s infinite;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+        @keyframes scroll-line {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            51% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
         }
 
-        /* --- Content Sections --- */
+        /* --- Sections Shared Layout --- */
         section {
-            padding: 100px 15%;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: 1s all ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+            padding: 150px 10%;
+            min-height: 100vh;
         }
 
         .section-header {
-            margin-bottom: 60px;
-            position: relative;
+            margin-bottom: 80px;
         }
 
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-header span {
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            font-size: 4rem;
-            color: #eff6ff;
-            z-index: -1;
-            font-weight: 800;
-        }
-
-        /* --- Experience Cards --- */
-        .experience-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: 30px;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-        }
-
-        .card:hover {
-            border-color: var(--primary-accent);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
-        }
-
-        .card-tag {
-            background: var(--primary-accent);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: inline-block;
+        .section-label {
+            color: var(--gold);
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
             margin-bottom: 15px;
+            display: block;
         }
 
-        .card h3 { font-size: 1.8rem; margin-bottom: 5px; }
-        .card h4 { color: var(--primary-accent); font-weight: 600; margin-bottom: 20px; }
-        
-        .card ul { list-style: none; }
-        .card li { 
-            margin-bottom: 12px; 
-            padding-left: 25px; 
-            position: relative;
-            color: var(--text-muted);
-        }
-        .card li::before {
-            content: '✦';
-            position: absolute;
-            left: 0;
-            color: var(--primary-accent);
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
         }
 
-        /* --- Skills & Education --- */
-        .grid-two {
+        /* --- Profile / About --- */
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: var(--bg-accent);
+            border: 1px solid rgba(212,175,55,0.2);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        /* --- Experience Grid --- */
+        .exp-container {
+            display: grid;
             gap: 40px;
         }
 
-        .skill-pill {
+        .exp-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 50px;
+            border-radius: 2px;
+            border-left: 1px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .exp-card:hover {
+            background: rgba(212, 175, 55, 0.03);
+            transform: translateX(10px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 25px;
+        }
+
+        .exp-role {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .exp-company {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .exp-list {
+            list-style: none;
+            color: var(--text-dim);
+        }
+
+        .exp-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .exp-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* --- Education & Skills --- */
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+        }
+
+        .skill-tag {
             display: inline-block;
             padding: 10px 20px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            margin: 5px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .skill-pill:hover {
-            background: var(--primary-accent);
-            color: white;
-            transform: rotate(-2deg);
-        }
-
-        /* --- Artsy Elements --- */
-        .divider-art {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--border);
-            margin: 50px 0;
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 100px 15% 50px;
-            background: #f8fafc;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .email-link {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.2rem, 5vw, 2.5rem);
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: 0.3s;
-            display: inline-block;
-            margin-bottom: 50px;
-            border-bottom: 2px solid var(--primary-accent);
-        }
-
-        .email-link:hover {
-            color: var(--primary-accent);
-            letter-spacing: 2px;
-        }
-
-        .footer-bottom {
-            margin-top: 50px;
+            border: 1px solid rgba(212,175,55,0.3);
+            margin: 0 10px 15px 0;
             font-size: 0.8rem;
-            color: var(--text-muted);
             letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        /* --- Artistic Quote Section --- */
+        .quote-sec {
+            text-align: center;
+            padding: 100px 20%;
+        }
+
+        .quote-sec blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            opacity: 0.6;
+        }
+
+        /* --- Professional Footer --- */
+        footer {
+            padding: 100px 10% 50px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .footer-email {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            color: var(--gold);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 50px;
+            transition: var(--transition);
+        }
+
+        .footer-email:hover {
+            opacity: 0.7;
+            letter-spacing: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .social-links a {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        .copyright-area {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 40px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--text-dim);
             text-transform: uppercase;
         }
 
-        /* --- Responsive --- */
-        @media (max-width: 900px) {
-            .grid-two { grid-template-columns: 1fr; }
-            section { padding: 80px 8%; }
-            nav { width: 95%; gap: 15px; }
+        /* --- Decorative SVG Illustrations --- */
+        .art-decor {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+            pointer-events: none;
         }
 
-        /* Spacer to help reach line count and improve flow */
-        .content-spacer { height: 100px; }
+        /* --- Responsive --- */
+        @media (max-width: 968px) {
+            .about-grid, .dual-grid { grid-template-columns: 1fr; }
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+            section { padding: 100px 5%; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); }
 
     </style>
 </head>
 <body>
 
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#about">Philosophy</a>
-        <a href="#experience">Path</a>
-        <a href="#skills">Abilities</a>
-        <a href="#contact">Reach</a>
+        <div class="nav-brand">CJA</div>
+        <div class="nav-links">
+            <a href="#about">Philosophy</a>
+            <a href="#experience">Path</a>
+            <a href="#education">Roots</a>
+            <a href="#contact">Connect</a>
+        </div>
     </nav>
 
-    <header id="home">
-        <div class="hero-art">English</div>
-        <div class="name-container">
-            <p class="subtitle">Licensed Professional Teacher</p>
-            <h1>Christine Joy Alutaya</h1>
-            <p class="intro-text">
-                Fostering growth through communication and dedicated support. 
-                Bridging the gap between behavioral development and academic success.
-            </p>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+    <header class="hero">
+        <span class="hero-subtitle">Educator & Educational Strategist</span>
+        <h1 class="hero-title">Christine Joy<br>Alutaya</h1>
+        <div class="scroll-indicator"></div>
     </header>
 
     <section id="about">
-        <div class="section-header">
-            <span>01</span>
-            <h2>Educational Objective</h2>
-        </div>
-        <div class="card" style="border-left: 8px solid var(--primary-accent);">
-            <p style="font-size: 1.2rem; font-style: italic;">
-                "A dedicated and adaptable professional with a track record of fostering positive relationships, 
-                providing support, and efficiently managing tasks. Seeking a rewarding opportunity to 
-                leverage skills in communication and management to contribute to the success of a dynamic organization."
-            </p>
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" alt="Workspace">
+            </div>
+            <div class="about-text">
+                <span class="section-label">A Professional Narrative</span>
+                <h2 class="section-title">Bridging Theory and Practice</h2>
+                <p>
+                    I approach education not just as a transfer of knowledge, but as a systematic orchestration of growth. 
+                    With a background rooted in secondary education and behavioral therapy management, I specialize 
+                    in creating environments where students—and the organizations that support them—can thrive.
+                </p>
+                <p>
+                    My experience in branch supervision has honed my ability to balance documentation, finance, 
+                    and operational logistics without losing sight of the human element in educational services.
+                </p>
+            </div>
         </div>
     </section>
 
     <section id="experience">
         <div class="section-header">
-            <span>02</span>
-            <h2>The Professional Path</h2>
+            <span class="section-label">Professional Experience</span>
+            <h2 class="section-title">The Career Journey</h2>
         </div>
-        
-        <div class="experience-grid">
-            <div class="card">
-                <span class="card-tag">Leadership</span>
-                <span style="float: right; color: var(--text-muted); font-size: 0.8rem;">2025 — 2026</span>
-                <h3>Branch Supervisor</h3>
-                <h4>The Bright Future Behavioral Therapy Inc.</h4>
-                <ul>
-                    <li>Orchestrated branch finances and documentation to ensure seamless operational efficiency.</li>
-                    <li>Oversaw therapeutic sessions and strategically procured necessary supplies for behavioral programs.</li>
-                    <li>Served as the primary liaison between the local branch and corporate headquarters.</li>
+
+        <div class="exp-container">
+            <div class="exp-card">
+                <div class="exp-header">
+                    <span class="exp-role">Branch Supervisor</span>
+                    <span class="text-dim">May 2025 — January 2026</span>
+                </div>
+                <span class="exp-company">The Bright Future Behavioral Therapy Inc.</span>
+                <ul class="exp-list">
+                    <li>Led branch-wide financial management and rigorous operational documentation.</li>
+                    <li>Orchestrated program procurement and optimized supply chains for educational sessions.</li>
+                    <li>Served as the strategic liaison between regional branches and the corporate headquarters.</li>
                 </ul>
             </div>
 
-            <div class="card">
-                <span class="card-tag">Education</span>
-                <span style="float: right; color: var(--text-muted); font-size: 0.8rem;">2024 — 2026</span>
-                <h3>Educator</h3>
-                <h4>The Bright Future Behavioral Therapy Inc.</h4>
-                <ul>
-                    <li>Conducted specialized one-on-one sessions tailored to individual student progress and needs.</li>
-                    <li>Maintained active communication with parents regarding developmental milestones and activities.</li>
-                    <li>Developed at-home reinforcement strategies to improve skill retention and behavioral support.</li>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <span class="exp-role">Teacher & Facilitator</span>
+                    <span class="text-dim">April 2024 — January 2026</span>
+                </div>
+                <span class="exp-company">The Bright Future Behavioral Therapy Inc.</span>
+                <ul class="exp-list">
+                    <li>Designed and executed bespoke one-on-one sessions focused on skill retention.</li>
+                    <li>Maintained consistent collaborative dialogue with families to ensure holistic support.</li>
+                    <li>Developed customized at-home behavioral strategies to extend the learning environment.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="grid-two">
-            <div>
+    <section id="education">
+        <div class="dual-grid">
+            <div class="edu-path">
                 <div class="section-header">
-                    <span>03</span>
-                    <h2>Education</h2>
+                    <span class="section-label">Academic Foundations</span>
+                    <h2 class="section-title">Education</h2>
                 </div>
-                <div class="card">
-                    <h3>Bachelor of Secondary Education</h3>
-                    <p style="color: var(--primary-accent); font-weight: 600;">Major in English</p>
-                    <p>St. Vincent de Ferrer College of Camarin Inc.</p>
-                    <div style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                        <p><i class="fas fa-award" style="color: #fbbf24;"></i> Outstanding Performance in Internship</p>
-                    </div>
+                <div class="exp-card" style="border: none; padding-left: 0;">
+                    <h3 style="font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 10px;">Bachelor of Secondary Education</h3>
+                    <p style="color: var(--gold); margin-bottom: 5px;">Major in English</p>
+                    <p class="text-dim">St. Vincent de Ferrer College of Camarin Inc.</p>
                 </div>
             </div>
-            <div>
+
+            <div class="skills-area">
                 <div class="section-header">
-                    <span>04</span>
-                    <h2>Abilities</h2>
+                    <span class="section-label">Expertise</span>
+                    <h2 class="section-title">Core Skills</h2>
                 </div>
-                <div style="padding-top: 20px;">
-                    <div class="skill-pill">Effective Communication</div>
-                    <div class="skill-pill">Academic Support</div>
-                    <div class="skill-pill">Operational Management</div>
-                    <div class="skill-pill">Behavioral Support</div>
-                    <div class="skill-pill">Documentation</div>
-                    <div class="skill-pill">English Pedagogy</div>
-                    <div class="skill-pill">Strategic Planning</div>
-                    <div class="skill-pill">Parental Coordination</div>
+                <div class="skills-wrap">
+                    <span class="skill-tag">Effective Communication</span>
+                    <span class="skill-tag">Academic Support</span>
+                    <span class="skill-tag">Operational Management</span>
+                    <span class="skill-tag">Behavioral Support</span>
+                    <span class="skill-tag">Financial Coordination</span>
+                    <span class="skill-tag">Strategic Liaison</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="divider-art">✦ ✦ ✦</div>
+    <div class="quote-sec">
+        <blockquote>
+            "To teach is to learn twice, to manage is to empower many."
+        </blockquote>
+    </div>
 
     <footer id="contact">
-        <p class="subtitle" style="margin-bottom: 20px;">For inquiries and collaborations</p>
-        <a href="mailto:christinejoyalutaya7@gmail.com" class="email-link">christinejoyalutaya7@gmail.com</a>
+        <span class="section-label">Let's Connect</span>
+        <a href="mailto:christinejoyalutaya7@gmail.com" class="footer-email">christinejoyalutaya7@gmail.com</a>
         
-        <div class="footer-bottom">
-            <p>San Jose Del Monte, Bulacan</p>
-            <p>+63 946 691 4473</p>
-            <div style="margin: 30px 0; font-size: 1.2rem; color: var(--primary-accent);">
-                <i class="fab fa-linkedin-in" style="margin: 0 15px;"></i>
-                <i class="fas fa-envelope" style="margin: 0 15px;"></i>
-            </div>
-            <p>&copy; 2026 Christine Joy Alutaya. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="far fa-file-pdf"></i></a>
+        </div>
+
+        <div class="copyright-area">
+            &copy; 2026 Christine Joy Alutaya | All Rights Reserved.
+            <br>
+            <span style="font-size: 0.6rem; opacity: 0.4; margin-top: 10px; display: block;">Built with Precision and Purpose.</span>
         </div>
     </footer>
 
     <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1
-        };
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        // Hero Entrance
+        gsap.to(".hero-title", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" });
+        gsap.to(".hero-subtitle", { opacity: 1, duration: 2, delay: 0.5 });
+
+        // Section Headers Reveal
+        document.querySelectorAll(".section-title").forEach(title => {
+            gsap.from(title, {
+                scrollTrigger: {
+                    trigger: title,
+                    start: "top 80%",
+                },
+                opacity: 0,
+                y: 20,
+                duration: 1
             });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
         });
 
-        // Smooth scroll for nav links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // Experience Cards Reveal
+        gsap.from(".exp-card", {
+            scrollTrigger: {
+                trigger: ".exp-container",
+                start: "top 70%",
+            },
+            opacity: 0,
+            x: -30,
+            stagger: 0.3,
+            duration: 1
+        });
+
+        // Skill Tags Stagger
+        gsap.from(".skill-tag", {
+            scrollTrigger: {
+                trigger: ".skills-wrap",
+                start: "top 90%",
+            },
+            opacity: 0,
+            scale: 0.8,
+            stagger: 0.1,
+            duration: 0.5
+        });
+
+        // Parallax Effect for blobs
+        window.addEventListener("mousemove", (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            gsap.to(".blob-1", { x: x * 50, y: y * 50 });
+            gsap.to(".blob-2", { x: -x * 50, y: -y * 50 });
         });
     </script>
-    
-    </body>
-                    </html>
+</body>
+    </html>
