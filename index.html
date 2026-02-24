@@ -3,444 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christine Joy Alutaya | Professional Portfolio</title>
+    <title>Christine Joy Alutaya | Portfolio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #1e293b;
-            --accent: #3b82f6;
-            --text: #334155;
-            --light: #f8fafc;
-            --white: #ffffff;
+            --bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --primary: #3b82f6;
+            --accent: #60a5fa;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--light);
-            color: var(--text);
+            background-color: var(--bg);
+            color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        /* --- Background Elements --- */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
         /* --- Navigation --- */
         nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
+            width: 100%;
+            padding: 1.5rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
 
         .logo {
             font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--primary);
+            font-size: 1.4rem;
             letter-spacing: -1px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
             display: flex;
+            gap: 2.5rem;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--secondary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            color: var(--text-dim);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+        .nav-links a:hover { color: var(--primary); }
 
         /* --- Hero Section --- */
-        header {
+        .hero {
             height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             padding: 0 10%;
         }
 
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
+        .badge {
+            background: rgba(59, 130, 246, 0.1);
             color: var(--primary);
-            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1.2s ease;
+            letter-spacing: 1px;
         }
 
-        .btn {
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-        }
-
-        /* --- Stats Section (Awards) --- */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: -50px;
-            padding: 0 10%;
-            position: relative;
-            z-index: 10;
-        }
-
-        .stat-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .stat-card i {
-            font-size: 2.5rem;
-            color: #fbbf24;
-            margin-bottom: 1rem;
-        }
-
-        /* --- Experience Section --- */
-        section {
-            padding: 100px 10% 60px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-        }
-
-        .section-title div {
-            width: 50px;
-            height: 4px;
-            background: var(--primary);
-            margin: 10px auto;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .job-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            transition: 0.3s;
-        }
-
-        .job-card:hover {
-            transform: scale(1.02);
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .job-title {
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
             font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--text-dim);
             font-size: 1.2rem;
-            color: var(--secondary);
+            margin-bottom: 2.5rem;
         }
 
-        .job-date {
-            background: #e0f2fe;
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+        /* --- Bento Grid / Experience --- */
+        .section-padding { padding: 100px 10%; }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
         }
 
-        .job-card ul {
-            list-style: none;
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
         }
 
-        .job-card ul li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .job-card ul li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-
-        /* --- Skills Grid --- */
-        .skills-grid {
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
-        .skill-item {
-            background: #eff6ff;
-            padding: 1.5rem;
+        .bento-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .span-2 { grid-column: span 2; }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
             border-radius: 12px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* --- Skills Section --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 12px 28px;
+            border-radius: 100px;
             font-weight: 600;
-            color: var(--secondary);
             transition: 0.3s;
         }
 
-        .skill-item:hover {
+        .skill-pill:hover {
             background: var(--primary);
-            color: white;
+            border-color: var(--primary);
         }
 
-        /* --- Footer/Contact --- */
+        /* --- Reveal Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
         footer {
-            background: var(--secondary);
-            color: white;
-            padding: 80px 10% 40px;
+            padding: 80px 10%;
+            border-top: 1px solid var(--border);
             text-align: center;
         }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+        .email-link {
+            font-size: 2rem;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            display: block;
+            margin-top: 2rem;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .email-link:hover {
+            color: var(--primary);
         }
 
-        .contact-item i {
-            color: var(--accent);
-        }
-
-        .copyright {
-            opacity: 0.6;
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
-        }
-
-        /* --- Animations --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .span-2 { grid-column: auto; }
             .nav-links { display: none; }
-            header { text-align: left; padding: 0 5%; }
-            .job-header { flex-direction: column; gap: 5px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-glow"></div>
+
     <nav>
-        <div class="logo">CJA.PORTFOLIO</div>
+        <div class="logo">ALUTAYA.</div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
+            <li><a href="#about">Profile</a></li>
+            <li><a href="#experience">Career</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <header>
-        <div class="hero-content">
-            <p>Licensed Professional Teacher</p>
-            <h1>Christine Joy Alutaya</h1>
-            <p style="text-transform: none; color: var(--text); font-weight: 400; max-width: 700px; margin: 0 auto 2rem;">
-                [cite: 1, 3] Dedicated and adaptable professional with a proven track record of fostering positive relationships and efficiently managing branch operations.
-            </p>
-            <a href="mailto:christinejoyalutaya7@gmail.com" class="btn btn-primary">Hire Me Now</a>
+    <section class="hero" id="about">
+        <div class="badge">Licensed Professional Teacher</div>
+        <h1>Christine Joy <br><span>Alutaya</span></h1>
+        <p>A dedicated and adaptable professional specializing in behavioral therapy branch supervision and academic excellence.</p>
+        <div style="display: flex; gap: 1rem;">
+            <div class="skill-pill" style="background: var(--primary);">Summa Cum Laude</div>
+            <div class="skill-pill">Management</div>
         </div>
-    </header>
+    </section>
 
-    <div class="stats-container">
-        <div class="stat-card">
-            <i class="fas fa-medal"></i>
-            <h3>Summa Cum Laude</h3>
-            <p>[cite: 22] Academic Excellence</p>
-        </div>
-        <div class="stat-card">
-            <i class="fas fa-star"></i>
-            <h3>Outstanding Intern</h3>
-            <p>[cite: 23] Best in Internship Performance</p>
-        </div>
-        <div class="stat-card">
-            <i class="fas fa-certificate"></i>
-            <h3>LPT</h3>
-            <p>[cite: 1] Licensed Professional Teacher</p>
-        </div>
-    </div>
-
-    <section id="experience">
-        <div class="section-title">
-            <h2>Work Experience</h2>
-            <div></div>
+    <section class="section-padding" id="experience">
+        <div class="section-header reveal">
+            <h2>Professional Milestones</h2>
         </div>
         
-        <div class="timeline">
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Branch Supervisor</div>
-                        <div style="color: var(--primary); font-weight: 600;">The Bright Future Behavioral Therapy Inc. [cite: 6, 8]</div>
-                    </div>
-                    <span class="job-date">May 2025 - Jan 2026 [cite: 10]</span>
-                </div>
-                <ul>
-                    <li>[cite: 11] Managed branch finances and documentation ensuring operational efficiency.</li>
-                    <li>[cite: 11] Oversaw therapy sessions and procured necessary supplies for programs.</li>
-                    <li>[cite: 12] Acted as the primary point of contact between the branch and the main office.</li>
+        <div class="bento-grid">
+            <div class="bento-card span-2 reveal">
+                <span class="card-tag">MAY 2025 — JAN 2026</span>
+                <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                <h3>Branch Supervisor</h3>
+                <p style="color: var(--primary); margin-bottom: 1rem;">The Bright Future Behavioral Therapy Inc.</p>
+                <ul style="color: var(--text-dim); list-style: none;">
+                    <li>• Directed branch finances and documentation with total operational oversight.</li>
+                    <li>• Facilitated strategic communication between regional branches and headquarters.</li>
+                    <li>• Managed program procurement and session quality control.</li>
                 </ul>
             </div>
 
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Teacher</div>
-                        <div style="color: var(--primary); font-weight: 600;">The Bright Future Behavioral Therapy Inc. [cite: 6, 13]</div>
-                    </div>
-                    <span class="job-date">Apr 2024 - Jan 2026 [cite: 14]</span>
-                </div>
-                <ul>
-                    <li>[cite: 15] Conducted one-on-one sessions and monitored student progress.</li>
-                    <li>[cite: 15] Communicated development and activities to parents.</li>
-                    <li>[cite: 16] Suggested at-home strategies for skill retention and behavior support.</li>
-                </ul>
+            <div class="bento-card reveal">
+                <div class="icon-box" style="background: #fbbf24;"><i class="fas fa-award"></i></div>
+                <h3>Academic Honors</h3>
+                <p style="color: var(--text-dim);">Graduated <b>Summa Cum Laude</b> with a Bachelor of Secondary Education.</p>
+            </div>
+
+            <div class="bento-card reveal">
+                <div class="icon-box"><i class="fas fa-user-graduate"></i></div>
+                <h3>Teacher</h3>
+                <p style="color: var(--text-dim);">Specialized in one-on-one behavioral development and parent-teacher strategy coordination.</p>
+            </div>
+
+            <div class="bento-card span-2 reveal">
+                <span class="card-tag">EXCELLENCE</span>
+                <div class="icon-box" style="background: #10b981;"><i class="fas fa-check-double"></i></div>
+                <h3>Outstanding Internship Performance</h3>
+                <p style="color: var(--text-dim);">Recognized for exceptional classroom management and instructional delivery during the teaching internship phase.</p>
             </div>
         </div>
     </section>
 
-    <section id="education" style="background: #f1f5f9;">
-        <div class="section-title">
-            <h2>Education</h2>
-            <div></div>
+    <section class="section-padding" id="education" style="background: rgba(255,255,255,0.02);">
+        <div class="section-header reveal">
+            <h2>Educational Foundation</h2>
         </div>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <div class="job-card" style="border-left: none; border-top: 5px solid var(--primary);">
-                <i class="fas fa-university" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                <h3 style="font-size: 1.5rem;">Bachelor of Secondary Education</h3>
-                <p style="font-weight: 600; color: var(--text);">Major in English [cite: 19]</p>
-                <p>[cite: 18] St. Vincent de Ferrer College of Camarin Inc.</p>
-            </div>
+        <div class="bento-card reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <i class="fas fa-university" style="font-size: 3rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+            <h3>Bachelor of Secondary Education</h3>
+            <p style="font-size: 1.2rem; font-weight: 600;">Major in English</p>
+            <p style="color: var(--text-dim);">St. Vincent de Ferrer College of Camarin Inc.</p>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="section-title">
-            <h2>Core Competencies</h2>
-            <div></div>
+    <section class="section-padding">
+        <div class="section-header reveal">
+            <h2>Strategic Skills</h2>
         </div>
-        <div class="skills-grid">
-            <div class="skill-item"><i class="fas fa-comments"></i><br>Effective Communication [cite: 25]</div>
-            <div class="skill-item"><i class="fas fa-book-reader"></i><br>Academic Support [cite: 26]</div>
-            <div class="skill-item"><i class="fas fa-tasks"></i><br>Operational Management [cite: 27]</div>
-            <div class="skill-item"><i class="fas fa-users"></i><br>Relationship Building [cite: 3]</div>
+        <div class="skills-container reveal">
+            <div class="skill-pill">Operational Management</div>
+            <div class="skill-pill">Effective Communication</div>
+            <div class="skill-pill">Academic Support</div>
+            <div class="skill-pill">Skill Retention Strategies</div>
+            <div class="skill-pill">Behavioral Support</div>
+            <div class="skill-pill">Financial Documentation</div>
         </div>
     </section>
 
     <footer id="contact">
-        <div class="section-title">
-            <h2 style="color: white;">Get In Touch</h2>
-            <div style="background: var(--accent);"></div>
-        </div>
+        <p style="color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px;">Direct Inquiries</p>
+        <a href="mailto:christinejoyalutaya7@gmail.com" class="email-link">christinejoyalutaya7@gmail.com</a>
         
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <span>+63 946 691 4473 [cite: 1]</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>christinejoyalutaya7@gmail.com [cite: 1]</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Bulacan, Philippines [cite: 9]</span>
-            </div>
-        </div>
-
-        <a href="mailto:christinejoyalutaya7@gmail.com" class="btn btn-primary" style="background: var(--white); color: var(--primary);">Email Me</a>
-
-        <div class="copyright">
-            <p>&copy; 2026 Christine Joy Alutaya. All Rights Reserved.</p>
+        <div style="margin-top: 4rem; color: var(--text-dim); font-size: 0.8rem;">
+            <p>&copy; 2026 Christine Joy Alutaya • Bulacan, Philippines</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // Scroll Reveal Logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
-        });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
-                                                        </html>
+    </html>
