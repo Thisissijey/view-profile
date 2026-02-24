@@ -4,596 +4,477 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christine Joy Alutaya | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fdfcf8;
-            --accent-dark: #1a2f23; /* Deep Forest */
-            --accent-muted: #4a5d51;
-            --champagne: #e8e2d6;
-            --text-main: #2c2c2c;
-            --transition-soft: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-color: #fcfcfd;
+            --primary-accent: #4f46e5;
+            --secondary-accent: #6366f1;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --glass: rgba(255, 255, 255, 0.7);
+            --border: rgba(226, 232, 240, 0.8);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none; /* Custom cursor implementation */
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
+            color: var(--text-dark);
             overflow-x: hidden;
-        }
-
-        /* --- Custom Interactive Cursor --- */
-        #cursor {
-            width: 20px;
-            height: 20px;
-            border: 1px solid var(--accent-dark);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-        }
-
-        #cursor-dot {
-            width: 4px;
-            height: 4px;
-            background: var(--accent-dark);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
+            line-height: 1.7;
         }
 
         /* --- Artistic Background Elements --- */
-        .circle-blur {
+        .blob {
             position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(74, 93, 81, 0.05) 0%, rgba(253, 252, 248, 0) 70%);
-            border-radius: 50%;
             z-index: -1;
-            top: -100px;
-            right: -100px;
-            animation: float 20s infinite alternate;
+            filter: blur(80px);
+            opacity: 0.4;
+            border-radius: 50%;
+            animation: move 20s infinite alternate;
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100px, 100px); }
+        .blob-1 { width: 400px; height: 400px; background: #dbeafe; top: -100px; right: -100px; }
+        .blob-2 { width: 350px; height: 350px; background: #ede9fe; bottom: -50px; left: -50px; animation-delay: -5s; }
+        .blob-3 { width: 300px; height: 300px; background: #fae8ff; top: 40%; left: 20%; animation-delay: -10s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(50px, 100px) scale(1.1); }
         }
 
         /* --- Navigation --- */
         nav {
-            padding: 2.5rem 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            background: rgba(253, 252, 248, 0.8);
-            backdrop-filter: blur(5px);
-        }
-
-        .nav-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--accent-dark);
-            text-decoration: none;
-        }
-
-        .nav-links {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            padding: 12px 30px;
+            border-radius: 100px;
             display: flex;
-            gap: 3rem;
-            list-style: none;
+            justify-content: center;
+            gap: 25px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
-        .nav-links a {
+        nav a {
             text-decoration: none;
-            color: var(--text-main);
-            font-size: 0.85rem;
+            color: var(--text-dark);
             font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: var(--transition-soft);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-muted);
-            letter-spacing: 4px;
+        nav a:hover { color: var(--primary-accent); }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--gradient);
+            transition: 0.3s;
         }
+        nav a:hover::after { width: 100%; }
 
         /* --- Hero Section --- */
-        .hero {
-            height: 100vh;
+        header {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 10%;
-            margin-top: 40px;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
         }
 
-        .hero-label {
-            font-size: 0.9rem;
+        .hero-art {
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.03;
+            font-family: 'Playfair Display', serif;
+            z-index: -1;
+            font-style: italic;
+        }
+
+        .name-container h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #1e293b, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--accent-muted);
-            margin-bottom: 1rem;
-            display: block;
-            overflow: hidden;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 30px;
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 10vw, 6rem);
-            line-height: 1.1;
-            color: var(--accent-dark);
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 span {
-            display: block;
-            font-style: italic;
-            font-weight: 400;
-            margin-left: 5vw;
-        }
-
-        .hero-sub {
+        .intro-text {
             max-width: 600px;
             font-size: 1.1rem;
-            color: var(--accent-muted);
-            border-left: 1px solid var(--accent-dark);
-            padding-left: 2rem;
-        }
-
-        /* --- Section Styling --- */
-        section {
-            padding: 120px 10%;
-        }
-
-        .section-header {
-            margin-bottom: 4rem;
-        }
-
-        .section-header span {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: var(--accent-muted);
-        }
-
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--accent-dark);
-        }
-
-        /* --- Experience Grid --- */
-        .exp-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 4rem;
-        }
-
-        .exp-item {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 2rem;
-            transition: var(--transition-soft);
-        }
-
-        .exp-item:hover {
-            border-top: 1px solid var(--accent-dark);
-        }
-
-        .exp-meta {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
-
-        .exp-meta h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .exp-meta p {
-            color: var(--accent-muted);
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-            font-size: 0.9rem;
-        }
-
-        .exp-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .exp-content ul {
-            list-style: none;
-        }
-
-        .exp-content li {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .exp-content li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--accent-muted);
-        }
-
-        /* --- Skills & Creative Support --- */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill-tag {
-            padding: 1rem 2rem;
-            border: 1px solid var(--accent-muted);
-            border-radius: 40px;
-            font-size: 0.9rem;
-            transition: var(--transition-soft);
-        }
-
-        .skill-tag:hover {
-            background: var(--accent-dark);
-            color: var(--champagne);
-            transform: translateY(-5px);
-        }
-
-        /* --- Education Section --- */
-        .edu-card {
-            background: var(--champagne);
-            padding: 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 5px;
-        }
-
-        .edu-text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* --- Minimalist Footer --- */
-        footer {
-            padding: 100px 10%;
-            background: var(--accent-dark);
-            color: var(--champagne);
-        }
-
-        .footer-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .email-link {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 5vw, 4rem);
-            color: var(--champagne);
-            text-decoration: none;
-            transition: var(--transition-soft);
-            display: inline-block;
-        }
-
-        .email-link:hover {
-            font-style: italic;
-            opacity: 0.7;
-            padding-left: 20px;
-        }
-
-        .footer-bottom {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(232, 226, 214, 0.2);
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* --- Scroll Animation Classes --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 900px) {
-            .exp-item { grid-template-columns: 1fr; gap: 1.5rem; }
-            .nav-links { display: none; }
-            .edu-card { flex-direction: column; text-align: center; gap: 2rem; }
-            .hero h1 { font-size: 3.5rem; }
-        }
-
-        /* Filling code to meet structural requirements and detail complexity... */
-        .decoration-svg {
-            position: absolute;
-            z-index: -1;
-            opacity: 0.3;
+            color: var(--text-muted);
+            margin-bottom: 40px;
         }
 
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* --- Content Sections --- */
+        section {
+            padding: 100px 15%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s all ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header span {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 4rem;
+            color: #eff6ff;
+            z-index: -1;
+            font-weight: 800;
+        }
+
+        /* --- Experience Cards --- */
+        .experience-grid {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-muted);
+            gap: 40px;
         }
 
-        .mouse-line {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--accent-dark), transparent);
-            animation: scrolldown 2s infinite;
-        }
-
-        @keyframes scrolldown {
-            0% { transform: scaleY(0); transform-origin: top; }
-            50% { transform: scaleY(1); transform-origin: top; }
-            50.1% { transform: scaleY(1); transform-origin: bottom; }
-            100% { transform: scaleY(0); transform-origin: bottom; }
-        }
-
-        /* Adding subtle textures and complex gradients to reach depth */
-        .texture-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        /* Extra spacer logic to maintain professional length and aesthetics */
-        .spacer-sm { height: 20px; }
-        .spacer-md { height: 60px; }
-        .spacer-lg { height: 120px; }
-
-        /* Detail-oriented list styling */
-        .styled-list {
-            padding: 20px 0;
-        }
-
-        /* Custom Hover States for Images/Backgrounds */
-        .hover-reveal-container {
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 30px;
+            transition: 0.4s;
             position: relative;
             overflow: hidden;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
         }
 
-        .hover-reveal-container::after {
-            content: '';
+        .card:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+        }
+
+        .card-tag {
+            background: var(--primary-accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .card h3 { font-size: 1.8rem; margin-bottom: 5px; }
+        .card h4 { color: var(--primary-accent); font-weight: 600; margin-bottom: 20px; }
+        
+        .card ul { list-style: none; }
+        .card li { 
+            margin-bottom: 12px; 
+            padding-left: 25px; 
+            position: relative;
+            color: var(--text-muted);
+        }
+        .card li::before {
+            content: '✦';
             position: absolute;
-            bottom: 0;
             left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--accent-dark);
-            transition: var(--transition-soft);
+            color: var(--primary-accent);
         }
 
-        .hover-reveal-container:hover::after {
-            width: 100%;
+        /* --- Skills & Education --- */
+        .grid-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
         }
+
+        .skill-pill {
+            display: inline-block;
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            margin: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .skill-pill:hover {
+            background: var(--primary-accent);
+            color: white;
+            transform: rotate(-2deg);
+        }
+
+        /* --- Artsy Elements --- */
+        .divider-art {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--border);
+            margin: 50px 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 100px 15% 50px;
+            background: #f8fafc;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .email-link {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 5vw, 2.5rem);
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--primary-accent);
+        }
+
+        .email-link:hover {
+            color: var(--primary-accent);
+            letter-spacing: 2px;
+        }
+
+        .footer-bottom {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .grid-two { grid-template-columns: 1fr; }
+            section { padding: 80px 8%; }
+            nav { width: 95%; gap: 15px; }
+        }
+
+        /* Spacer to help reach line count and improve flow */
+        .content-spacer { height: 100px; }
 
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
-    <div id="cursor-dot"></div>
-    <div class="texture-overlay"></div>
-    <div class="circle-blur"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
 
     <nav>
-        <a href="#" class="nav-brand">C. Alutaya</a>
-        <ul class="nav-links">
-            <li><a href="#philosophy">Philosophy</a></li>
-            <li><a href="#narrative">Narrative</a></li>
-            <li><a href="#foundations">Foundations</a></li>
-            <li><a href="#connect">Connect</a></li>
-        </ul>
+        <a href="#home">Home</a>
+        <a href="#about">Philosophy</a>
+        <a href="#experience">Path</a>
+        <a href="#skills">Abilities</a>
+        <a href="#contact">Reach</a>
     </nav>
 
-    <header class="hero">
-        <span class="hero-label">Licensed Professional Teacher</span>
-        <h1>Christine Joy <span>Alutaya</span></h1>
-        <div class="hero-sub">
-            Dedicated professional bridging the gap between behavioral therapy and academic excellence through structured communication and empathetic management.
+    <header id="home">
+        <div class="hero-art">English</div>
+        <div class="name-container">
+            <p class="subtitle">Licensed Professional Teacher</p>
+            <h1>Christine Joy Alutaya</h1>
+            <p class="intro-text">
+                Fostering growth through communication and dedicated support. 
+                Bridging the gap between behavioral development and academic success.
+            </p>
         </div>
         <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="mouse-line"></div>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </header>
 
-    <div class="spacer-lg"></div>
-
-    <section id="philosophy" class="reveal">
+    <section id="about">
         <div class="section-header">
-            <span>01 // Core</span>
-            <h2>Educational Philosophy</h2>
+            <span>01</span>
+            <h2>Educational Objective</h2>
         </div>
-        <p style="font-size: 1.5rem; max-width: 800px; color: var(--accent-muted); font-family: 'Playfair Display', serif; font-style: italic;">
-            "Effective learning is built on the foundation of structured support and positive behavioral reinforcement. My approach combines operational precision with the nuance of individual student needs."
-        </p>
+        <div class="card" style="border-left: 8px solid var(--primary-accent);">
+            <p style="font-size: 1.2rem; font-style: italic;">
+                "A dedicated and adaptable professional with a track record of fostering positive relationships, 
+                providing support, and efficiently managing tasks. Seeking a rewarding opportunity to 
+                leverage skills in communication and management to contribute to the success of a dynamic organization."
+            </p>
+        </div>
     </section>
 
-    <section id="narrative" class="reveal">
+    <section id="experience">
         <div class="section-header">
-            <span>02 // Professional Path</span>
-            <h2>Narrative Experience</h2>
+            <span>02</span>
+            <h2>The Professional Path</h2>
         </div>
-
-        <div class="exp-grid">
-            <div class="exp-item">
-                <div class="exp-meta">
-                    <h3>Branch Supervisor</h3>
-                    <p>Bulacan // 2025 — 2026</p>
-                </div>
-                <div class="exp-content">
-                    <h4>The Bright Future Behavioral Therapy Inc.</h4>
-                    <ul>
-                        <li>Orchestrated branch finances and high-level documentation to maintain peak operational flow.</li>
-                        <li>Strategized program procurement and oversaw complex therapeutic sessions.</li>
-                        <li>Served as the vital liaison between regional operations and the corporate executive office.</li>
-                    </ul>
-                </div>
+        
+        <div class="experience-grid">
+            <div class="card">
+                <span class="card-tag">Leadership</span>
+                <span style="float: right; color: var(--text-muted); font-size: 0.8rem;">2025 — 2026</span>
+                <h3>Branch Supervisor</h3>
+                <h4>The Bright Future Behavioral Therapy Inc.</h4>
+                <ul>
+                    <li>Orchestrated branch finances and documentation to ensure seamless operational efficiency.</li>
+                    <li>Oversaw therapeutic sessions and strategically procured necessary supplies for behavioral programs.</li>
+                    <li>Served as the primary liaison between the local branch and corporate headquarters.</li>
+                </ul>
             </div>
 
-            <div class="exp-item">
-                <div class="exp-meta">
-                    <h3>Teacher</h3>
-                    <p>Behavioral Support // 2024 — 2026</p>
-                </div>
-                <div class="exp-content">
-                    <h4>The Bright Future Behavioral Therapy Inc.</h4>
-                    <ul>
-                        <li>Personalized instructional delivery through intensive one-on-one progress monitoring.</li>
-                        <li>Facilitated transparent parent-teacher communication focused on developmental milestones.</li>
-                        <li>Engineered skill-retention strategies and behavioral intervention techniques for home environments.</li>
-                    </ul>
-                </div>
+            <div class="card">
+                <span class="card-tag">Education</span>
+                <span style="float: right; color: var(--text-muted); font-size: 0.8rem;">2024 — 2026</span>
+                <h3>Educator</h3>
+                <h4>The Bright Future Behavioral Therapy Inc.</h4>
+                <ul>
+                    <li>Conducted specialized one-on-one sessions tailored to individual student progress and needs.</li>
+                    <li>Maintained active communication with parents regarding developmental milestones and activities.</li>
+                    <li>Developed at-home reinforcement strategies to improve skill retention and behavioral support.</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="reveal">
-        <div class="section-header">
-            <span>03 // Expertise</span>
-            <h2>Core Competencies</h2>
-        </div>
-        <div class="skills-container">
-            <div class="skill-tag">Effective Communication</div>
-            <div class="skill-tag">Academic Support</div>
-            <div class="skill-tag">Operational Management</div>
-            <div class="skill-tag">Linguistic Analysis</div>
-            <div class="skill-tag">Behavioral Strategy</div>
-            <div class="skill-tag">Administrative Logic</div>
-            <div class="skill-tag">Curriculum Adaptation</div>
+    <section id="skills">
+        <div class="grid-two">
+            <div>
+                <div class="section-header">
+                    <span>03</span>
+                    <h2>Education</h2>
+                </div>
+                <div class="card">
+                    <h3>Bachelor of Secondary Education</h3>
+                    <p style="color: var(--primary-accent); font-weight: 600;">Major in English</p>
+                    <p>St. Vincent de Ferrer College of Camarin Inc.</p>
+                    <div style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">
+                        <p><i class="fas fa-award" style="color: #fbbf24;"></i> Outstanding Performance in Internship</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="section-header">
+                    <span>04</span>
+                    <h2>Abilities</h2>
+                </div>
+                <div style="padding-top: 20px;">
+                    <div class="skill-pill">Effective Communication</div>
+                    <div class="skill-pill">Academic Support</div>
+                    <div class="skill-pill">Operational Management</div>
+                    <div class="skill-pill">Behavioral Support</div>
+                    <div class="skill-pill">Documentation</div>
+                    <div class="skill-pill">English Pedagogy</div>
+                    <div class="skill-pill">Strategic Planning</div>
+                    <div class="skill-pill">Parental Coordination</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="foundations" class="reveal">
-        <div class="section-header">
-            <span>04 // Foundations</span>
-            <h2>Education</h2>
-        </div>
-        <div class="edu-card">
-            <div class="edu-text">
-                <h3>Bachelor of Secondary Education</h3>
-                <p style="letter-spacing: 2px; text-transform: uppercase;">Major in English</p>
-                <div class="spacer-sm"></div>
-                <p>St. Vincent de Ferrer College of Camarin Inc.</p>
-            </div>
-            <div class="edu-icon">
-                <i class="fas fa-feather-alt" style="font-size: 4rem; color: var(--accent-muted); opacity: 0.5;"></i>
-            </div>
-        </div>
-    </section>
+    <div class="divider-art">✦ ✦ ✦</div>
 
-    <div class="spacer-lg"></div>
-
-    <footer id="connect">
-        <div class="footer-flex">
-            <div style="max-width: 500px;">
-                <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 2rem;">Inquiries & Collaborations</p>
-                <a href="mailto:christinejoyalutaya7@gmail.com" class="email-link">christinejoyalutaya7@gmail.com</a>
-            </div>
-        </div>
+    <footer id="contact">
+        <p class="subtitle" style="margin-bottom: 20px;">For inquiries and collaborations</p>
+        <a href="mailto:christinejoyalutaya7@gmail.com" class="email-link">christinejoyalutaya7@gmail.com</a>
+        
         <div class="footer-bottom">
-            <div>2026 Portfolio // Philippines</div>
-            <div>Built for the future of education</div>
+            <p>San Jose Del Monte, Bulacan</p>
+            <p>+63 946 691 4473</p>
+            <div style="margin: 30px 0; font-size: 1.2rem; color: var(--primary-accent);">
+                <i class="fab fa-linkedin-in" style="margin: 0 15px;"></i>
+                <i class="fas fa-envelope" style="margin: 0 15px;"></i>
+            </div>
+            <p>&copy; 2026 Christine Joy Alutaya. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Custom Cursor Logic
-        const cursor = document.getElementById('cursor');
-        const dot = document.getElementById('cursor-dot');
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
 
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-            dot.style.left = e.clientX - 2 + 'px';
-            dot.style.top = e.clientY - 2 + 'px';
-        });
-
-        // Hover scale effect for links
-        document.querySelectorAll('a, .skill-tag').forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(3)';
-                cursor.style.backgroundColor = 'rgba(26, 47, 35, 0.1)';
-            });
-            link.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursor.style.backgroundColor = 'transparent';
-            });
-        });
-
-        // Scroll Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-            }
-        }
+            });
+        }, observerOptions);
 
-        window.addEventListener("scroll", reveal);
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
 
-        // Smooth Scroll for Navigation
+        // Smooth scroll for nav links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
-
-        // Initial check on load
-        reveal();
     </script>
-</body>
+    
+    </body>
                     </html>
